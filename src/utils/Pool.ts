@@ -5,27 +5,13 @@ export default class Pool
 {
     private static pools:any[] = [];
     
-    public static get<T>(Type:Constructor<T>, autoFree:boolean = false, ...args:any[])
+    public static get<T>(Type:Constructor<T>, autoFree:boolean = false)
     {
         const pool = this.getPool(Type);
         if (pool.length > 0)
             return autoFree ? pool[0] : pool.pop();
         else
-        {
-            if (args.length < 1)
-                return autoFree ? this.free(Type, new Type()) : new Type();
-            else
-            {
-                switch (args.length)
-                {
-                    case 1: return new Type(args[0]);
-                    case 2: return new Type(args[0], args[1]);
-                    case 3: return new Type(args[0], args[1], args[2]);
-                    case 4: return new Type(args[0], args[1], args[2], args[3]);
-                    default: return new Type(args[0], args[1], args[2], args[3], args[4]);
-                }
-            }
-        }
+            return autoFree ? this.free(Type, new Type()) : new Type();
     }
     
     private static getPool(Type:any)
