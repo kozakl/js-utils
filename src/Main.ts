@@ -13,7 +13,7 @@ class Main
 {
     constructor()
     {
-        console.log(ArrayUtil.shuffle<number>([1, 2, 3]));
+        //console.log(ArrayUtil.shuffle<number>([1, 2, 3]));
         //console.log(BezierUtil.pointOnQuadCurve(1, 1, 2, 3, 4, 5, 0.5, {}));
         //console.log(Cursor);
         //console.log(MathUtil);
@@ -28,7 +28,9 @@ class Main
         const date2 = Pool.get(Date);
         
         Pool.free(Date, date1, date2);
-        console.log(Pool.getPool(Date));
+        //console.log(Pool.getPool(Date));
+        console.log(ArrayUtil.removeNull<number>([,,,1,,2,,3]));
+        
         //console.log(date1, date2);
     }
 }
