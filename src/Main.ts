@@ -13,7 +13,7 @@ class Main
 {
     constructor()
     {
-        //console.log(ArrayUtil.shuffle<number>([1, 2, 3]));
+        console.log(ArrayUtil.shuffle<number>([1, 2, 3]));
         //console.log(BezierUtil.pointOnQuadCurve(1, 1, 2, 3, 4, 5, 0.5, {}));
         //console.log(Cursor);
         //console.log(MathUtil);
