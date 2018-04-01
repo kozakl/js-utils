@@ -5,7 +5,7 @@ export default class Pool
 {
     private static pools:any[] = [];
     
-    public static get<T>(Type:Constructor<T>, autoFree:boolean = false)
+    public static get<T>(Type:Constructor<T>, autoFree:boolean = false):T
     {
         const pool = this.getPool(Type);
         if (pool.length > 0)
