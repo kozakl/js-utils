@@ -26,34 +26,14 @@ export default class ArrayUtil
         return str;
     }
     
-    public static removeNull<T>(array:T[], allowReverse:boolean = false):T[]
+    public static removeNull<T>(array:T[]):T[]
     {
-        var nullCount = 0           ;
-    var length    = array.length ;
-    for (var i=0, len=array.length; i<len; i++) { if (!array[i]) {nullCount++} }
-    // no item is null
-    if (!nullCount) { return array}
-    // all items are null
-    if (nullCount == length) { array.length = 0; return array }
-    // mix of null // non-null
-    var idest=0, isrc=length-1;
-    length -= nullCount ;                
-    while (true) {
-         // find a non null (source) slot on the right
-         while (!array[isrc])  { isrc--; nullCount--; } 
-         if    (!nullCount) { break }       // break if found all null
-         // find one null slot on the left (destination)
-         while ( array[idest]) { idest++  }  
-         // perform copy
-         array[idest]=array[isrc];
-         if (!(--nullCount)) {break}
-         idest++;  isrc --; 
-    }
-    array.length=length; 
-        if (allowReverse)
-            return array;
-        else
-            return this.reverse(array);
+        for (let i = array.length; i--;) {
+            if (!array[i])  
+                array.splice(i, 1);
+        }
+        
+        return array;
     }
     
     public static reverse<T>(array:T[]):T[]

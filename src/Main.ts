@@ -29,7 +29,8 @@ class Main
         
         Pool.free(Date, date1, date2);
         //console.log(Pool.getPool(Date));
-        console.log(ArrayUtil.removeNull<number>([,,,1,,2,,3]));
+        //console.log(ArrayUtil.removeNull<number>([,,,1,,2,,3]));
+        console.log(ArrayUtil.removeNull<number>([, ,,,'b', ,'c',,,,'z']));
         
         //console.log(date1, date2);
     }
