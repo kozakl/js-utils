@@ -30,6 +30,8 @@ export default class Pool
         const pool = this.getPool(Type);
         for (let i = array.length; i--;)
             array[i] && pool.push(array[i]);
+        
+        array.length = 0;
     }
 }
 
