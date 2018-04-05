@@ -29,7 +29,7 @@ export default class Pool
     {
         const pool = this.getPool(Type);
         for (let i = array.length; i--;)
-            pool.push(array[i]);
+            array[i] && pool.push(array[i]);
     }
 }
 
