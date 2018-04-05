@@ -24,13 +24,18 @@ class Main
         
         //console.log(range(0, 10, 2));
         
-        const date1 = Pool.get(Date);
-        const date2 = Pool.get(Date);
+        const dates:Date[] = [];
+        dates[0] = Pool.get(Date);
+        dates[1] = Pool.get(Date);
         
-        Pool.free(Date, date1, date2);
-        //console.log(Pool.getPool(Date));
+        //Pool.free(Date, dates[0], dates[1]);
+        //Pool.free(Date, ...dates)
+        Pool.freeArray(Date, dates);
+        
+        
+        console.log(Pool.getPool(Date));
         //console.log(ArrayUtil.removeNull<number>([,,,1,,2,,3]));
-        console.log(ArrayUtil.removeNull<number>([, ,,,'b', ,'c',,,,'z']));
+        //console.log(ArrayUtil.removeNull<number>([, ,,,'b', ,'c',,,,'z']));
         
         //console.log(date1, date2);
     }
