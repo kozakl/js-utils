@@ -73,17 +73,6 @@ export default class DateUtil
         return this.daysShort[date.getDay()];
     }
     
-    public static toISO(date:Date, year = true)
-    {
-        if (year)
-            return date.getFullYear() + '-' + 
-                   StringUtil.pad1(date.getMonth() + 1) + '-' + 
-                   StringUtil.pad1(date.getDate());
-        else
-            return StringUtil.pad1(date.getMonth() + 1) + '-' + 
-                   StringUtil.pad1(date.getDate());
-    }
-    
     public static getDateOffset(offset:number)
     {
         const date = new Date();
@@ -92,6 +81,24 @@ export default class DateUtil
         date.setHours(0, 0, 0, 0);
         
         return date;
+    }
+    
+    public static getDaysBetween(days:Date[], start:Date, end:Date)
+    {
+        Pool.freeArray(Date, days);
+        
+        const current = Pool.get<Date>(Date);
+        current.setTime(start.getTime());
+        while (current.getTime() <= end.getTime()) {
+            const date = Pool.get<Date>(Date);
+            date.setTime(current.getTime());
+            days.push(date);
+            
+            current.setDate(current.getDate() + 1);
+        }
+        
+        Pool.free(Date, current);
+        return days;
     }
     
     public static isToday(date:Date)
@@ -122,6 +129,17 @@ export default class DateUtil
             return true;
         else if (this.holidays.includes(this.toISO(date, false)))
             return true;
+    }
+    
+    public static toISO(date:Date, year = true)
+    {
+        if (year)
+            return date.getFullYear() + '-' + 
+                   StringUtil.pad1(date.getMonth() + 1) + '-' + 
+                   StringUtil.pad1(date.getDate());
+        else
+            return StringUtil.pad1(date.getMonth() + 1) + '-' + 
+                   StringUtil.pad1(date.getDate());
     }
     
     private static isWeekend(date:Date)
@@ -174,23 +192,5 @@ export default class DateUtil
             return true;
         date.setDate(date.getDate() + 59);
         return date.getTime() == da.getTime();
-    }
-    
-    public static getDaysBetween(days:Date[], start:Date, end:Date)
-    {
-        Pool.freeArray(Date, days);
-        
-        const current = Pool.get<Date>(Date);
-        current.setTime(start.getTime());
-        while (current.getTime() <= end.getTime()) {
-            const date = Pool.get<Date>(Date);
-            date.setTime(current.getTime());
-            days.push(date);
-            
-            current.setDate(current.getDate() + 1);
-        }
-        
-        Pool.free(Date, current);
-        return days;
     }
 }
