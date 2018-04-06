@@ -4,7 +4,7 @@
     "type": "git"
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "test:watch": "yarn test -- --watchAll"
   },
   "jest": {
