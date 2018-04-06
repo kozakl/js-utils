@@ -6,6 +6,7 @@ import Pool from './utils/Pool';
 import range from './utils/range';
 import StringUtil from './utils/StringUtil';
 import classNames from './utils/classNames';
+import DateUtil from './utils/DateUtil';
 /**
  * @author kozakluke@gmail.com
  */
@@ -24,20 +25,23 @@ class Main
         
         //console.log(range(0, 10, 2));
         
-        const dates:Date[] = [];
-        dates[0] = Pool.get(Date);
-        dates[1] = Pool.get(Date);
+        //const dates:Date[] = [];
+        //dates[0] = Pool.get(Date);
+        //dates[1] = Pool.get(Date);
         
         //Pool.free(Date, dates[0], dates[1]);
         //Pool.free(Date, ...dates)
-        Pool.freeArray(Date, dates);
+        //Pool.freeArray(Date, dates);
         
         
-        console.log(Pool.getPool(Date));
+        //console.log(Pool.getPool(Date));
         //console.log(ArrayUtil.removeNull<number>([,,,1,,2,,3]));
         //console.log(ArrayUtil.removeNull<number>([, ,,,'b', ,'c',,,,'z']));
         
         //console.log(date1, date2);
+        
+        
+        console.log(DateUtil.getMonthShortName(new Date()));
     }
 }
 
