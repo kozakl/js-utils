@@ -53,6 +53,26 @@ export default class DateUtil
         return this.monthsShort[index];
     }
     
+    public static getDayName(date:Date)
+    {
+        return this.days[date.getDay()];
+    }
+    
+    public static getDayNameAt(index:number)
+    {
+        return this.days[index];
+    }
+    
+    public static getDayShortName(date:Date)
+    {
+        return this.daysShort[date.getDay()];
+    }
+    
+    public static getDayShortNameAt(index:number)
+    {
+        return this.daysShort[date.getDay()];
+    }
+    
     public static toISO(date:Date, year = true)
     {
         if (year)
