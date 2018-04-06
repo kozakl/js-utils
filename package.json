@@ -4,8 +4,20 @@
     "type": "git"
   },
   "scripts": {
-    "test": "jest --coverage",
+    "test": "jest",
     "test:watch": "yarn test -- --watchAll"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx"
+    ]
   },
   "devDependencies": {
     "@types/jest": "^22.2.2",
