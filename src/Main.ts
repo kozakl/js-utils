@@ -41,6 +41,7 @@ class Main
         //console.log(date1, date2);
         
         
+        console.log(DateUtil.getMonthName(new Date()));
         console.log(DateUtil.getMonthShortName(new Date()));
     }
 }

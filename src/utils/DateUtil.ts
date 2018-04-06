@@ -33,7 +33,12 @@ export default class DateUtil
         '11-11', '12-25', '12-26'
     ];
     
-    static toISO(date:Date, year = true)
+    public static getMonthName(date:Date)
+    {
+        return this.months[date.getMonth()]
+    }
+    
+    public static toISO(date:Date, year = true)
     {
         if (year)
             return date.getFullYear() + '-' + 
