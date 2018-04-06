@@ -5,11 +5,6 @@ import StringUtil from './StringUtil';
  */
 export default class DateUtil
 {
-    private static holidays = [
-        '01-01', '01-06', '05-01',
-        '05-03', '08-15', '11-01',
-        '11-11', '12-25', '12-26'
-    ];
     private static months = [
         'Styczen',     'Luty',     'Marzec',
         'Kwiecień',    'Maj',      'Czerwiec',
@@ -32,7 +27,11 @@ export default class DateUtil
         'Śr', 'Cz', 'Pt',
         'Sb'
     ];
-    private static date = new Date();
+    private static holidays = [
+        '01-01', '01-06', '05-01',
+        '05-03', '08-15', '11-01',
+        '11-11', '12-25', '12-26'
+    ];
     
     static toISO(date:Date, year = true)
     {
@@ -47,12 +46,12 @@ export default class DateUtil
     
     public static getDateOffset(offset:number)
     {
-        this.date = new Date();
-        this.date.setTime(Date.now());
-        this.date.setDate(this.date.getDate() + offset);
-        this.date.setHours(0, 0, 0, 0);
+        const date = new Date();
+        date.setTime(Date.now());
+        date.setDate(date.getDate() + offset);
+        date.setHours(0, 0, 0, 0);
         
-        return this.date;
+        return date;
     }
     
     public static getMonthNameByIndex(index:number)
@@ -113,11 +112,11 @@ export default class DateUtil
     
     private static isEasterOrCC(da:Date)
     {
-        var date, a, b, c, m, d;
+        var a, b, c, m, d;
         
         var y = da.getFullYear();
         // Instantiate the date object.
-        date = this.date;
+        const date = Pool.get<Date>(Date, true);
 
         // Set the timestamp to midnight.
         date.setHours( 0, 0, 0, 0 );
