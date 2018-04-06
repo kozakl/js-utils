@@ -35,7 +35,22 @@ export default class DateUtil
     
     public static getMonthName(date:Date)
     {
-        return this.months[date.getMonth()]
+        return this.months[date.getMonth()];
+    }
+    
+    public static getMonthNameAt(index:number)
+    {
+        return this.months[index];
+    }
+    
+    public static getMonthShortName(date:Date)
+    {
+        return this.monthsShort[date.getMonth()];
+    }
+    
+    public static getMonthShortNameAt(index:number)
+    {
+        return this.monthsShort[index];
     }
     
     public static toISO(date:Date, year = true)
@@ -57,26 +72,6 @@ export default class DateUtil
         date.setHours(0, 0, 0, 0);
         
         return date;
-    }
-    
-    public static getMonthNameByIndex(index:number)
-    {
-        return this.months[index]
-    }
-    
-    public static getDayName(date:Date)
-    {
-        return this.days[date.getDay()]
-    }
-    
-    public static getDayShortName(date:Date)
-    {
-        return this.daysShort[date.getDay()]
-    }
-    
-    public static getMonthShortName(date:Date)
-    {
-        return this.monthsShort[date.getMonth()]
     }
     
     public static isToday(date:Date)
