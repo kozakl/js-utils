@@ -70,7 +70,7 @@ export default class DateUtil
     
     public static getDayShortNameAt(index:number)
     {
-        return this.daysShort[date.getDay()];
+        return this.daysShort[index];
     }
     
     public static getDateOffset(offset:number)
