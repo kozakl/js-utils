@@ -159,13 +159,12 @@ export default class DateUtil
             c = c + 1;
         
         // Use c first to find the month: April or March.
-        month = (1 <= c && c <= 19) ? 3 : 2;
-        // Then use c to find the full moon after the northward equinox.
-        day = (50 - c) % 31;
-        
+        let month = (1 <= c && c <= 19) ? 3 : 2,
+            day   = (50 - c) % 31;
         temp.setMonth(month, day);
         temp.setMonth(month, day + (7 - temp.getDay()));
         temp.setDate(temp.getDate() + 1);
+        
         if (temp.getTime() === date.getTime())
             return true;
         temp.setDate(temp.getDate() + 59);
