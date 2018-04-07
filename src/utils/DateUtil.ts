@@ -136,50 +136,42 @@ export default class DateUtil
                date.getDay() == 0;
     }
     
-    private static isEasterOrCC(da:Date)
+    private static isEasterOrCC(date:Date)
     {
-        var a, b, c, m, d;
+        let b, c, m, d;
         
-        var y = da.getFullYear();
+        let year = date.getFullYear();
         // Instantiate the date object.
-        const date = Pool.get<Date>(Date, true);
-
-        // Set the timestamp to midnight.
-        date.setHours( 0, 0, 0, 0 );
-
-        // Set the year.
-        date.setFullYear( y );
-
+        const temp = Pool.get<Date>(Date, true);
+        temp.setHours(0, 0, 0, 0);
+        temp.setFullYear(year);
+        
         // Find the golden number.
-        a = y % 19;
-
+        let golden = year % 19;
+        
         // Choose which version of the algorithm to use based on the given year.
-        b = ( 2200 <= y && y <= 2299 ) ?
-            ( ( 11 * a ) + 4 ) % 30 :
-            ( ( 11 * a ) + 5 ) % 30;
-
+        b = ( 2200 <= year && year <= 2299 ) ?
+            ( ( 11 * golden ) + 4 ) % 30 :
+            ( ( 11 * golden ) + 5 ) % 30;
+        
         // Determine whether or not to compensate for the previous step.
-        c = ( ( b === 0 ) || ( b === 1 && a > 10 ) ) ?
-            ( b + 1 ) :
-            b;
-
+        
+        c = b;
+        if ((b === 0) || (b === 1 && golden > 10))
+            c = b + 1;
+        
         // Use c first to find the month: April or March.
-        m = ( 1 <= c && c <= 19 ) ? 3 : 2;
-
+        m = (1 <= c && c <= 19) ? 3 : 2;
         // Then use c to find the full moon after the northward equinox.
-        d = ( 50 - c ) % 31;
-
-        // Mark the date of that full moon—the "Paschal" full moon.
-        date.setMonth( m, d );
-
-        // Count forward the number of days until the following Sunday (Easter).
-        date.setMonth( m, d + ( 7 - date.getDay() ) );
-
-        date.setDate(date.getDate() + 1);
-        if (date.getTime() == da.getTime())
+        d = (50 - c) % 31;
+        
+        temp.setMonth(m, d);
+        temp.setMonth(m, d + (7 - temp.getDay()));
+        temp.setDate(temp.getDate() + 1);
+        if (temp.getTime() === date.getTime())
             return true;
-        date.setDate(date.getDate() + 59);
-        return date.getTime() == da.getTime();
+        temp.setDate(temp.getDate() + 59);
+        return temp.getTime() === date.getTime();
     }
     
     public static toISO(date:Date, year = true)
