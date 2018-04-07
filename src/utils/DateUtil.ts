@@ -138,7 +138,7 @@ export default class DateUtil
     
     private static isEasterOrCC(date:Date)
     {
-        let b, c, m, d;
+        let c, month, day;
         
         let year = date.getFullYear();
         // Instantiate the date object.
@@ -147,26 +147,24 @@ export default class DateUtil
         temp.setFullYear(year);
         
         // Find the golden number.
-        let golden = year % 19;
+        let ratio = year % 19;
         
         // Choose which version of the algorithm to use based on the given year.
-        b = ( 2200 <= year && year <= 2299 ) ?
-            ( ( 11 * golden ) + 4 ) % 30 :
-            ( ( 11 * golden ) + 5 ) % 30;
+        c = (2200 <= year && year <= 2299) ?
+            ((11 * ratio) + 4) % 30 :
+            ((11 * ratio) + 5) % 30;
         
         // Determine whether or not to compensate for the previous step.
-        
-        c = b;
-        if ((b === 0) || (b === 1 && golden > 10))
-            c = b + 1;
+        if ((c === 0) || (c === 1 && ratio > 10))
+            c = c + 1;
         
         // Use c first to find the month: April or March.
-        m = (1 <= c && c <= 19) ? 3 : 2;
+        month = (1 <= c && c <= 19) ? 3 : 2;
         // Then use c to find the full moon after the northward equinox.
-        d = (50 - c) % 31;
+        day = (50 - c) % 31;
         
-        temp.setMonth(m, d);
-        temp.setMonth(m, d + (7 - temp.getDay()));
+        temp.setMonth(month, day);
+        temp.setMonth(month, day + (7 - temp.getDay()));
         temp.setDate(temp.getDate() + 1);
         if (temp.getTime() === date.getTime())
             return true;
