@@ -15,7 +15,7 @@ export default class DateUtil
         'Sty', 'Lut', 'Mar',
         'Kwi', 'Maj', 'Cze',
         'Lip', 'Sie', 'Wrz',
-        'Paź', 'Li',  'Gru'
+        'Paź', 'Lis', 'Gru'
     ];
     private static days = [
         'Niedziela', 'Poniedziałek', 'Wtorek',
