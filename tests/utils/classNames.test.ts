@@ -1,7 +1,8 @@
 import classNames from '../../src/utils/classNames';
 
 describe('classNames', ()=> {
-    test('test1', ()=> expect(classNames('class1', 'class2')).toBe('class1 class2'));
+    test('test1', ()=>
+        expect(classNames('class1', 'class2')).toBe('class1 class2'));
     test('test2', ()=> {
         const data = {
           val1: true,
