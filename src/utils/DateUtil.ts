@@ -130,17 +130,6 @@ export default class DateUtil
             return true;
     }
     
-    public static toISO(date:Date, year = true)
-    {
-        if (year)
-            return date.getFullYear() + '-' + 
-                   StringUtil.pad1(date.getMonth() + 1) + '-' + 
-                   StringUtil.pad1(date.getDate());
-        else
-            return StringUtil.pad1(date.getMonth() + 1) + '-' + 
-                   StringUtil.pad1(date.getDate());
-    }
-    
     private static isWeekend(date:Date)
     {
         return date.getDay() == 6 ||
@@ -191,5 +180,16 @@ export default class DateUtil
             return true;
         date.setDate(date.getDate() + 59);
         return date.getTime() == da.getTime();
+    }
+    
+    public static toISO(date:Date, year = true)
+    {
+        if (year)
+            return date.getFullYear() + '-' + 
+                   StringUtil.pad1(date.getMonth() + 1) + '-' + 
+                   StringUtil.pad1(date.getDate());
+        else
+            return StringUtil.pad1(date.getMonth() + 1) + '-' + 
+                   StringUtil.pad1(date.getDate());
     }
 }
