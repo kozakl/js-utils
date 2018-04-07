@@ -122,12 +122,9 @@ export default class DateUtil
     
     public static isHoliday(date:Date)
     {
-        if (this.isWeekend(date))
-            return true;
-        else if(this.isEasterOrCC(date))
-            return true;
-        else if (this.holidays.includes(this.toISO(date, false)))
-            return true;
+        return this.isWeekend(date) ||
+               this.isEasterOrCC(date) ||
+               this.holidays.includes(this.toISO(date, false));
     }
     
     private static isWeekend(date:Date)
