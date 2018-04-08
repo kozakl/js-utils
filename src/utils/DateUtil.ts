@@ -140,19 +140,11 @@ export default class DateUtil
     
     private static isEasterOrCC(date:Date)
     {
-        let c, month, day;
-        
         let year = date.getFullYear();
-        // Instantiate the date object.
-        const temp = Pool.get<Date>(Date, true);
-        temp.setHours(0, 0, 0, 0);
-        temp.setFullYear(year);
-        
-        // Find the golden number.
         let ratio = year % 19;
         
         // Choose which version of the algorithm to use based on the given year.
-        c = (2200 <= year && year <= 2299) ?
+        let c = (2200 <= year && year <= 2299) ?
             ((11 * ratio) + 4) % 30 :
             ((11 * ratio) + 5) % 30;
         
@@ -163,14 +155,20 @@ export default class DateUtil
         // Use c first to find the month: April or March.
         let month = (1 <= c && c <= 19) ? 3 : 2,
             day   = (50 - c) % 31;
-        temp.setMonth(month, day);
-        temp.setMonth(month, day + (7 - temp.getDay()));
-        temp.setDate(temp.getDate() + 1);
         
-        if (temp.getTime() === date.getTime())
+        const easter = Pool.get<Date>(Date, true);
+        easter.setHours(0, 0, 0, 0);
+        easter.setFullYear(year);
+        easter.setMonth(month, day);
+        easter.setMonth(month, day + (7 - easter.getDay()));
+        easter.setDate(easter.getDate() + 1);
+        
+        if (easter.getTime() === date.getTime())
             return true;
-        temp.setDate(temp.getDate() + 59);
-        return temp.getTime() === date.getTime();
+        else {
+            easter.setDate(easter.getDate() + 59);
+            return easter.getTime() === date.getTime();
+        }
     }
     
     public static toISO(date:Date, year = true)
