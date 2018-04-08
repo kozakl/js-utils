@@ -142,7 +142,7 @@ export default class DateUtil
     {
         const year   = date.getFullYear(),
               golden = year % 19;
-        let ratio = (11 * golden + 5) % 30;
+        let ratio = (golden * 11 + 5) % 30;
         if (ratio === 0 || (ratio === 1 && golden > 10))
             ratio++;
         let month = (1 <= ratio && ratio <= 19) ? 3 : 2,
