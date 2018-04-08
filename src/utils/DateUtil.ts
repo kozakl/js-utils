@@ -27,7 +27,7 @@ export default class DateUtil
         'Śr', 'Cz', 'Pt',
         'Sb'
     ];
-    private static holidays = [
+    private static regularHolidays = [
         '01-01', '01-06', '05-01',
         '05-03', '08-15', '11-01',
         '11-11', '12-25', '12-26'
@@ -123,14 +123,19 @@ export default class DateUtil
     public static isHoliday(date:Date)
     {
         return this.isWeekend(date) ||
-               this.isEasterOrCC(date) ||
-               this.holidays.includes(this.toISO(date, false));
+               this.isRegularHoliday(date) ||
+               this.isEasterOrCC(date);
     }
     
     private static isWeekend(date:Date)
     {
         return date.getDay() == 6 ||
                date.getDay() == 0;
+    }
+    
+    private static isRegularHoliday(date:Date)
+    {
+        return this.regularHolidays.includes(this.toISO(date, false));
     }
     
     private static isEasterOrCC(date:Date)
