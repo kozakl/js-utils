@@ -153,7 +153,7 @@ test('isToday', ()=> {
 
 test('isRequire', ()=> {
     let date = new Date();
-    date.setDate(date.getDate() - 1);
+    date.setDate(date.getDate() - 2);
     expect(DateUtil.isRequire(date)).toBeTruthy();
     
     date = new Date();
