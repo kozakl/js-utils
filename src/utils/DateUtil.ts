@@ -105,7 +105,8 @@ export default class DateUtil
     {
         const now = Pool.get(Date, true);
         now.setTime(Date.now());
-        return now.getDay() === date.getDay();
+        now.setHours(0, 0, 0, 0);
+        return now.getTime() === date.getTime();
     }
     
     public static isRequire(date:Date)

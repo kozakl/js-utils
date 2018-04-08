@@ -143,10 +143,11 @@ test('getDaysBetween', ()=> {
 
 test('isToday', ()=> {
     let date = new Date();
-    date.setHours(23, 59, 59, 59);
+    date.setHours(0, 0, 0, 0);
     expect(DateUtil.isToday(date)).toBeTruthy();
     
     date = new Date();
+    date.setHours(0, 0, 0, 0);
     date.setDate(date.getDate() -1);
     expect(DateUtil.isToday(date)).toBeFalsy();
 });
