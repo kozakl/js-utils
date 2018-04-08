@@ -140,21 +140,13 @@ export default class DateUtil
     
     private static isEasterOrCC(date:Date)
     {
-        let year = date.getFullYear();
-        let ratio = year % 19;
-        
-        // Choose which version of the algorithm to use based on the given year.
-        let c = (2200 <= year && year <= 2299) ?
-            ((11 * ratio) + 4) % 30 :
-            ((11 * ratio) + 5) % 30;
-        
-        // Determine whether or not to compensate for the previous step.
-        if ((c === 0) || (c === 1 && ratio > 10))
-            c = c + 1;
-        
-        // Use c first to find the month: April or March.
-        let month = (1 <= c && c <= 19) ? 3 : 2,
-            day   = (50 - c) % 31;
+        const year   = date.getFullYear(),
+              golden = year % 19;
+        let ratio = (11 * golden + 5) % 30;
+        if (ratio === 0 || (ratio === 1 && golden > 10))
+            ratio++;
+        let month = (1 <= ratio && ratio <= 19) ? 3 : 2,
+            day   = (50 - ratio) % 31;
         
         const easter = Pool.get<Date>(Date, true);
         easter.setHours(0, 0, 0, 0);
