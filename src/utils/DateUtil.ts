@@ -15,7 +15,7 @@ export default class DateUtil
         'Sty', 'Lut', 'Mar',
         'Kwi', 'Maj', 'Cze',
         'Lip', 'Sie', 'Wrz',
-        'Paź', 'Li',  'Gru'
+        'Paź', 'Lis', 'Gru'
     ];
     private static days = [
         'Niedziela', 'Poniedziałek', 'Wtorek',
@@ -27,7 +27,7 @@ export default class DateUtil
         'Śr', 'Cz', 'Pt',
         'Sb'
     ];
-    private static holidays = [
+    private static regularHolidays = [
         '01-01', '01-06', '05-01',
         '05-03', '08-15', '11-01',
         '11-11', '12-25', '12-26'
@@ -123,12 +123,45 @@ export default class DateUtil
     
     public static isHoliday(date:Date)
     {
-        if (this.isWeekend(date))
+        return this.isWeekend(date) ||
+               this.isRegularHoliday(date) ||
+               this.isEasterOrCC(date);
+    }
+    
+    private static isWeekend(date:Date)
+    {
+        return date.getDay() == 6 ||
+               date.getDay() == 0;
+    }
+    
+    private static isRegularHoliday(date:Date)
+    {
+        return this.regularHolidays.includes(this.toISO(date, false));
+    }
+    
+    private static isEasterOrCC(date:Date)
+    {
+        const year   = date.getFullYear(),
+              golden = year % 19;
+        let ratio = (golden * 11 + 5) % 30;
+        if (ratio === 0 || (ratio === 1 && golden > 10))
+            ratio++;
+        let month = (1 <= ratio && ratio <= 19) ? 3 : 2,
+            day   = (50 - ratio) % 31;
+        
+        const easter = Pool.get<Date>(Date, true);
+        easter.setHours(0, 0, 0, 0);
+        easter.setFullYear(year);
+        easter.setMonth(month, day);
+        easter.setMonth(month, day + (7 - easter.getDay()));
+        easter.setDate(easter.getDate() + 1);
+        
+        if (easter.getTime() === date.getTime())
             return true;
-        else if(this.isEasterOrCC(date))
-            return true;
-        else if (this.holidays.includes(this.toISO(date, false)))
-            return true;
+        else {
+            easter.setDate(easter.getDate() + 59);
+            return easter.getTime() === date.getTime();
+        }
     }
     
     public static toISO(date:Date, year = true)
@@ -140,57 +173,5 @@ export default class DateUtil
         else
             return StringUtil.pad1(date.getMonth() + 1) + '-' + 
                    StringUtil.pad1(date.getDate());
-    }
-    
-    private static isWeekend(date:Date)
-    {
-        return date.getDay() == 6 ||
-               date.getDay() == 0;
-    }
-    
-    private static isEasterOrCC(da:Date)
-    {
-        var a, b, c, m, d;
-        
-        var y = da.getFullYear();
-        // Instantiate the date object.
-        const date = Pool.get<Date>(Date, true);
-
-        // Set the timestamp to midnight.
-        date.setHours( 0, 0, 0, 0 );
-
-        // Set the year.
-        date.setFullYear( y );
-
-        // Find the golden number.
-        a = y % 19;
-
-        // Choose which version of the algorithm to use based on the given year.
-        b = ( 2200 <= y && y <= 2299 ) ?
-            ( ( 11 * a ) + 4 ) % 30 :
-            ( ( 11 * a ) + 5 ) % 30;
-
-        // Determine whether or not to compensate for the previous step.
-        c = ( ( b === 0 ) || ( b === 1 && a > 10 ) ) ?
-            ( b + 1 ) :
-            b;
-
-        // Use c first to find the month: April or March.
-        m = ( 1 <= c && c <= 19 ) ? 3 : 2;
-
-        // Then use c to find the full moon after the northward equinox.
-        d = ( 50 - c ) % 31;
-
-        // Mark the date of that full moon—the "Paschal" full moon.
-        date.setMonth( m, d );
-
-        // Count forward the number of days until the following Sunday (Easter).
-        date.setMonth( m, d + ( 7 - date.getDay() ) );
-
-        date.setDate(date.getDate() + 1);
-        if (date.getTime() == da.getTime())
-            return true;
-        date.setDate(date.getDate() + 59);
-        return date.getTime() == da.getTime();
     }
 }

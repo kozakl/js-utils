@@ -1,6 +1,9 @@
 # Dependency
 node_modules/
 
+# Jest
+coverage/
+
 # Mats
 mats/*
 
