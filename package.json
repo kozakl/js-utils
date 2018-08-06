@@ -1,5 +1,10 @@
 {
   "name": "utils-js",
+  "author": {
+    "name": "Luke Kozak",
+    "email": "kozakluke@gmail.com",
+    "url": "https://github.com/kozakluke"
+  },
   "repository": {
     "type": "git"
   },
