@@ -35,6 +35,6 @@ export default class Pool
     }
 }
 
-type Constructor<T> = {
+export type Constructor<T> = {
     new(...args:any[]):T;
 };
