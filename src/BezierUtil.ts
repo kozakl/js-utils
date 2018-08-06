@@ -51,7 +51,7 @@ export default class BezierUtil
     }
 }
 
-interface Result {
+export interface Result {
     x?:number,
     y?:number
 }

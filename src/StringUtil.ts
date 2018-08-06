@@ -8,6 +8,20 @@ export default class StringUtil
         return /\S/.test(str);
     }
     
+    /**
+     * @deprecated since version 2.0
+     */
+    public static isValidEmail(str:string)
+    {
+        console.warn('isValidEmail is deprecated use isEmail instead');
+        return /\S+@\S+\.\S+/.test(str);
+    }
+    
+    public static isEmail(str:string)
+    {
+        return /\S+@\S+\.\S+/.test(str);
+    }
+    
     public static firstToLower(str:string)
     {
         return str.substr(0, 1).toLowerCase() +
@@ -18,11 +32,6 @@ export default class StringUtil
     {
         return str.substr(0, 1).toUpperCase() +
                str.substr(1);
-    }
-    
-    public static isValidEmail(str:string)
-    {
-        return /\S+@\S+\.\S+/.test(str);
     }
     
     public static remove(str:string, start:number,

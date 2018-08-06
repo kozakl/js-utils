@@ -1,6 +1,9 @@
 # Dependency
 node_modules/
 
+# Dist
+dist/
+
 # Jest
 coverage/
 

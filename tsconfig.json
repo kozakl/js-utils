@@ -1,16 +1,19 @@
 {
   "compilerOptions": {
     "module": "commonjs",
+    "target": "es5",
     "strict": true,
     "strictNullChecks": false,
-    "target": "es5",
+    "declaration": true,
+    "rootDir": "./src",
+    "outDir": "./dist",
     "lib": [
       "dom",
       "es6",
       "es7"
     ]
   },
-  "exclude": [
-    "node_modules"
+  "include": [
+    "src"
   ]
 }
