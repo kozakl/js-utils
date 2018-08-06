@@ -1,6 +1,6 @@
 {
   "name": "@kozakluke/utils-js",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0-alpha.25",
   "author": {
     "name": "Luke Kozak",
     "email": "kozakluke@gmail.com",
@@ -12,6 +12,7 @@
   },
   "scripts": {
     "build": "rm -rf ./dist && tsc",
+    "publish-dist": "yarn build && cp package.json ./dist && npm publish ./dist",
     "test": "jest --coverage",
     "test:watch": "yarn test -- --watchAll"
   },
