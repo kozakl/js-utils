@@ -1,5 +1,6 @@
 {
-  "name": "utils-js",
+  "name": "@kozakluke/utils-js",
+  "version": "2.0.0-alpha.1",
   "author": {
     "name": "Luke Kozak",
     "email": "kozakluke@gmail.com",
