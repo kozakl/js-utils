@@ -4,6 +4,7 @@
     "type": "git"
   },
   "scripts": {
+    "build": "rm -rf ./dist && tsc",
     "test": "jest --coverage",
     "test:watch": "yarn test -- --watchAll"
   },
