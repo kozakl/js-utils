@@ -6,7 +6,8 @@
     "url": "https://github.com/kozakluke"
   },
   "repository": {
-    "type": "git"
+    "type": "git",
+    "url": "https://github.com/kozakluke/utils-js"
   },
   "scripts": {
     "build": "rm -rf ./dist && tsc",
