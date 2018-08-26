@@ -1,6 +1,3 @@
-/**
- * @author kozakluke@gmail.com
- */
 interface Element extends HTMLElement {
     mozRequestFullScreen():void;
     msRequestFullscreen():void;

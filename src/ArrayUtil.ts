@@ -1,6 +1,3 @@
-/**
- * @author kozakluke@gmail.com
- */
 export default class ArrayUtil
 {
     public static shuffle<T>(array:T[])

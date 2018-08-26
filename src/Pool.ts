@@ -1,6 +1,3 @@
-/**
- * @author kozakluke@gmail.com
- */
 export default class Pool
 {
     private static pools:any[] = [];
