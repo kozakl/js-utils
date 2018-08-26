@@ -32,20 +32,4 @@ export default class ArrayUtil
         
         return array;
     }
-    
-    public static reverse<T>(array:T[]):T[]
-    {
-        var length = array.length;
-        var left = null;
-        var right = null;
-        for (left = 0; left < length / 2; left += 1)
-        {
-            right = length - 1 - left;
-            var temporary = array[left];
-            array[left] = array[right];
-            array[right] = temporary;
-        }
-        
-        return array;
-    }
 }
