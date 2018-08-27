@@ -41,10 +41,10 @@ export default class StringUtil
         return '' + n;
     }
     
-    public static backSearch(str:string, searchChar:string,
+    public static backSearch(str:string, char:string,
                                          position:number) {
         for (let i = position; i--;) {
-            if (str[i] === searchChar)
+            if (str[i] === char)
                 return i;
         }
     }
