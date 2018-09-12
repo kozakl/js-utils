@@ -1,6 +1,3 @@
-/**
- * @author kozakluke@gmail.com
- */
 export default class JSONUtil
 {
     public static transformsDate<T extends ContainDate>(data:Normalized<T>)

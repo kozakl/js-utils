@@ -1,27 +1,5 @@
-/**
- * @author kozakluke@gmail.com
- */
 export default class StringUtil
 {
-    public static isFill(str:string)
-    {
-        return /\S/.test(str);
-    }
-    
-    /**
-     * @deprecated since version 2.0
-     */
-    public static isValidEmail(str:string)
-    {
-        console.warn('isValidEmail is deprecated use isEmail instead');
-        return /\S+@\S+\.\S+/.test(str);
-    }
-    
-    public static isEmail(str:string)
-    {
-        return /\S+@\S+\.\S+/.test(str);
-    }
-    
     public static firstToLower(str:string)
     {
         return str.substr(0, 1).toLowerCase() +
@@ -47,17 +25,6 @@ export default class StringUtil
                str.substring(end);
     }
     
-    public static toBoolean(str:string)
-    {
-        switch (str) {
-            case 'true':
-            case '1':
-                return true;
-            default:
-                return false;
-        }
-    }
-    
     public static pad1(n:number)
     {
         if (n < 10)
@@ -74,10 +41,10 @@ export default class StringUtil
         return '' + n;
     }
     
-    public static backSearch(str:string, searchChar:string,
+    public static backSearch(str:string, char:string,
                                          position:number) {
         for (let i = position; i--;) {
-            if (str[i] === searchChar)
+            if (str[i] === char)
                 return i;
         }
     }

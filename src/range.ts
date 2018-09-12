@@ -1,6 +1,3 @@
-/**
- * @author kozakluke@gmail.com
- */
 export default function range(start:number, stop:number, step = 1)
 {
     const array:number[] = [];

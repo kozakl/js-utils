@@ -1,6 +1,3 @@
-/**
- * @author kozakluke@gmail.com
- */
 export default class Cursor
 {
     private static element:HTMLElement;

@@ -1,6 +1,3 @@
-/**
- * @author kozakluke@gmail.com
- */
 export default function classNames(...args:string[])
 {
     let names = '';

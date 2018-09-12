@@ -1,8 +1,6 @@
 import Pool from './Pool';
 import StringUtil from './StringUtil';
-/**
- * @author kozakluke@gmail.com
- */
+
 export default class DateUtil
 {
     private static months = [
