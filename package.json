@@ -2,7 +2,6 @@
   "name": "@kozakl/utils",
   "version": "2.2.1",
   "sideEffects": false,
-  "side-effects": false,
   "author": {
     "name": "Luke Kozak",
     "email": "kozakluke@gmail.com",
