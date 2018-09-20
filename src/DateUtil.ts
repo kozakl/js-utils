@@ -3,23 +3,38 @@ import StringUtil from './StringUtil';
 
 export default class DateUtil
 {
-    private static months = [
-        'Styczen',     'Luty',     'Marzec',
-        'Kwiecień',    'Maj',      'Czerwiec',
-        'Lipiec',      'Sierpień', 'Wrzesień',
-        'Październik', 'Listopad', 'Grudzień'
-    ];
+    private static months = {
+        en: [
+            'January', 'February', 'March',
+            'April',   'May',      'June',
+            'July',    'August',   'September',
+            'October', 'November', 'December'
+        ],
+        pl: [
+            'Styczen',     'Luty',     'Marzec',
+            'Kwiecień',    'Maj',      'Czerwiec',
+            'Lipiec',      'Sierpień', 'Wrzesień',
+            'Październik', 'Listopad', 'Grudzień'
+        ]
+    };
     private static monthsShort = [
         'Sty', 'Lut', 'Mar',
         'Kwi', 'Maj', 'Cze',
         'Lip', 'Sie', 'Wrz',
         'Paź', 'Lis', 'Gru'
     ];
-    private static days = [
-        'Niedziela', 'Poniedziałek', 'Wtorek',
-        'Środa',     'Czwartek',     'Piątek',
-        'Sobota'
-    ];
+    private static days = {
+        en: [
+            'Sunday', 'Monday', 'Tuesday',
+            'Wednesday', 'Thursday', 'Friday',
+            'Saturday'  
+        ],
+        pl: [
+            'Niedziela', 'Poniedziałek', 'Wtorek',
+            'Środa', 'Czwartek', 'Piątek',
+            'Sobota'  
+        ]
+    };
     private static daysShort = [
         'Nd', 'Pn', 'Wt',
         'Śr', 'Cz', 'Pt',
@@ -31,14 +46,14 @@ export default class DateUtil
         '11-11', '12-25', '12-26'
     ];
     
-    public static getMonthName(date:Date)
+    public static getMonthName(date:Date, lang:'pl'|'en' = 'pl')
     {
-        return this.months[date.getMonth()];
+        return this.months[lang][date.getMonth()];
     }
     
-    public static getMonthNameAt(index:number)
+    public static getMonthNameAt(index:number, lang:'pl'|'en' = 'pl')
     {
-        return this.months[index];
+        return this.months[lang][index];
     }
     
     public static getMonthShortName(date:Date)
@@ -51,14 +66,14 @@ export default class DateUtil
         return this.monthsShort[index];
     }
     
-    public static getDayName(date:Date)
+    public static getDayName(date:Date, lang:'pl'|'en' = 'pl')
     {
-        return this.days[date.getDay()];
+        return this.days[lang][date.getDay()];
     }
     
-    public static getDayNameAt(index:number)
+    public static getDayNameAt(index:number, lang:'pl'|'en' = 'pl')
     {
-        return this.days[index];
+        return this.days[lang][index];
     }
     
     public static getDayShortName(date:Date)
