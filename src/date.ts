@@ -44,47 +44,47 @@ const regularHolidays = [
     '11-11', '12-25', '12-26'
 ];
 
-export function getMonthName(date:Date, lang:'pl'|'en' = 'pl')
+export function monthName(date:Date, lang:'pl'|'en' = 'pl')
 {
     return months[lang][date.getMonth()];
 }
 
-export function getMonthNameAt(index:number, lang:'pl'|'en' = 'pl')
+export function monthNameAt(index:number, lang:'pl'|'en' = 'pl')
 {
     return months[lang][index];
 }
 
-export function getMonthShortName(date:Date)
+export function monthShortName(date:Date)
 {
     return monthsShort[date.getMonth()];
 }
 
-export function getMonthShortNameAt(index:number)
+export function monthShortNameAt(index:number)
 {
     return monthsShort[index];
 }
 
-export function getDayName(date:Date, lang:'pl'|'en' = 'pl')
+export function dayName(date:Date, lang:'pl'|'en' = 'pl')
 {
     return days[lang][date.getDay()];
 }
 
-export function getDayNameAt(index:number, lang:'pl'|'en' = 'pl')
+export function dayNameAt(index:number, lang:'pl'|'en' = 'pl')
 {
     return days[lang][index];
 }
 
-export function getDayShortName(date:Date)
+export function dayShortName(date:Date)
 {
     return daysShort[date.getDay()];
 }
 
-export function getDayShortNameAt(index:number)
+export function dayShortNameAt(index:number)
 {
     return daysShort[index];
 }
 
-export function getDateOffset(offset:number)
+export function dateOffset(offset:number)
 {
     const date = new Date();
     date.setTime(Date.now());
@@ -94,7 +94,7 @@ export function getDateOffset(offset:number)
     return date;
 }
 
-export function getDaysBetween(days:Date[], start:Date, end:Date)
+export function daysBetween(days:Date[], start:Date, end:Date)
 {
     Pool.freeArray(Date, days);
     
