@@ -12,16 +12,6 @@ export default class ArrayUtil
         return array;
     }
     
-    public static join<T>(array:T[], separator:string,
-                                     start:number = 0) {
-        let str = '';
-        const n = array.length;
-        for (let i = start; i < n; i++)
-            str += array[i] + (i != n-1 ? separator : '');
-        
-        return str;
-    }
-    
     public static removeNull<T>(array:T[]):T[]
     {
         for (let i = array.length; i--;) {
