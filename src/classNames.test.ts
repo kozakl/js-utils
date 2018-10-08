@@ -1,4 +1,4 @@
-import classNames from '../../src/classNames';
+import classNames from './classNames';
 
 test('classNames', ()=> {
     expect(classNames('class1', 'class2')).toBe('class1 class2');

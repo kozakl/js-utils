@@ -1,4 +1,4 @@
-import DateUtil from '../../src/DateUtil';
+import DateUtil from './DateUtil';
 
 test('getMonthName', ()=> {
     expect(DateUtil.getMonthName(new Date(2018, 0))).toBe('Styczen');
