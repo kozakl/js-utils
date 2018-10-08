@@ -1,4 +1,3 @@
-import ArrayUtil from './src/ArrayUtil';
 import BezierUtil from './src/BezierUtil';
 import Cursor from './src/Cursor';
 import MathUtil from './src/MathUtil';
