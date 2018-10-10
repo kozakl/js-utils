@@ -4,14 +4,14 @@ import StringUtil from './StringUtil';
 const months = {
     en: [
         'January', 'February', 'March',
-        'April',   'May',      'June',
-        'July',    'August',   'September',
+        'April', 'May', 'June',
+        'July', 'August', 'September',
         'October', 'November', 'December'
     ],
     pl: [
-        'Styczen',     'Luty',     'Marzec',
-        'Kwiecień',    'Maj',      'Czerwiec',
-        'Lipiec',      'Sierpień', 'Wrzesień',
+        'Styczen', 'Luty', 'Marzec',
+        'Kwiecień', 'Maj',  'Czerwiec',
+        'Lipiec', 'Sierpień', 'Wrzesień',
         'Październik', 'Listopad', 'Grudzień'
     ]
 };
