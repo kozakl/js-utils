@@ -108,18 +108,6 @@ export function isToday(date:Date)
     return now.getTime() === date.getTime();
 }
 
-export function isRequire(date:Date)
-{
-    const now = Pool.get(Date);
-    now.setTime(Date.now());
-    const offset = Pool.get(Date);
-    offset.setTime(date.getTime());
-    offset.setHours(12 + 24, 0, 0, 0);
-    
-    Pool.free(Date, now, offset);
-    return now > offset;
-}
-
 export function isHoliday(date:Date)
 {
     return isWeekend(date) ||
