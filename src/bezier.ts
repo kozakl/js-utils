@@ -1,17 +1,3 @@
-export function pointOnQuadCurve(x1:number, y1:number,
-                                 cx:number, cy:number,
-                                 x2:number, y2:number,
-                                 t:number, result:Result) {
-    const ax = cx - x1,
-          ay = cy - y1,
-          bx = x2 - cx - ax,
-          by = y2 - cy - ay;
-    
-    result.x = x1 + t * (2*ax + t*bx);
-    result.y = y1 + t * (2*ay + t*by);
-    return result;
-}
-
 export function pointOnCubicCurve(x1:number, y1:number,
                                   c1x:number, c1y:number,
                                   c2x:number, c2y:number,
@@ -47,6 +33,20 @@ export function pointOnCubicCurveY(y1:number, c1y:number,
           cy = y2 - c2y - ay - by - by;
     
     return y1 + t * (3*ay + (t * (3*by + t*cy)));
+}
+
+export function pointOnQuadCurve(x1:number, y1:number,
+                                 cx:number, cy:number,
+                                 x2:number, y2:number,
+                                 t:number, result:Result) {
+    const ax = cx - x1,
+          ay = cy - y1,
+          bx = x2 - cx - ax,
+          by = y2 - cy - ay;
+    
+    result.x = x1 + t * (2*ax + t*bx);
+    result.y = y1 + t * (2*ay + t*by);
+    return result;
 }
 
 interface Result {
