@@ -86,8 +86,6 @@ export function dayShortNameAt(index:number)
 
 export function daysBetween(days:Date[], start:Date, end:Date)
 {
-    Pool.freeArray(Date, days);
-    
     const current = Pool.get<Date>(Date);
     current.setTime(start.getTime());
     while (current.getTime() <= end.getTime()) {
