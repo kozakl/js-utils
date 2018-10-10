@@ -128,14 +128,14 @@ export function isRegularHoliday(date:Date)
 
 export function isEasterOrCC(date:Date)
 {
-    const year   = date.getFullYear(),
-          golden = year % 19;
+    const year = date.getFullYear(),
+          golden = date.getFullYear() % 19;
     let ratio = (golden * 11 + 5) % 30;
     if (ratio === 0 || (ratio === 1 && golden > 10))
         ratio++;
-    let month = (1 <= ratio && ratio <= 19) ? 3 : 2,
-        day   = (50 - ratio) % 31;
     
+    let month = (1 <= ratio && ratio <= 19) ? 3 : 2,
+        day = (50 - ratio) % 31;
     const easter = Pool.get<Date>(Date, true);
     easter.setHours(0, 0, 0, 0);
     easter.setFullYear(year);
