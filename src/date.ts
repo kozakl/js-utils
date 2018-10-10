@@ -4,14 +4,14 @@ import StringUtil from './StringUtil';
 const months = {
     en: [
         'January', 'February', 'March',
-        'April',   'May',      'June',
-        'July',    'August',   'September',
+        'April', 'May', 'June',
+        'July', 'August', 'September',
         'October', 'November', 'December'
     ],
     pl: [
-        'Styczen',     'Luty',     'Marzec',
-        'Kwiecień',    'Maj',      'Czerwiec',
-        'Lipiec',      'Sierpień', 'Wrzesień',
+        'Styczen', 'Luty', 'Marzec',
+        'Kwiecień', 'Maj',  'Czerwiec',
+        'Lipiec', 'Sierpień', 'Wrzesień',
         'Październik', 'Listopad', 'Grudzień'
     ]
 };
@@ -84,20 +84,8 @@ export function dayShortNameAt(index:number)
     return daysShort[index];
 }
 
-export function dateOffset(offset:number)
-{
-    const date = new Date();
-    date.setTime(Date.now());
-    date.setDate(date.getDate() + offset);
-    date.setHours(0, 0, 0, 0);
-    
-    return date;
-}
-
 export function daysBetween(days:Date[], start:Date, end:Date)
 {
-    Pool.freeArray(Date, days);
-    
     const current = Pool.get<Date>(Date);
     current.setTime(start.getTime());
     while (current.getTime() <= end.getTime()) {
@@ -118,18 +106,6 @@ export function isToday(date:Date)
     now.setTime(Date.now());
     now.setHours(0, 0, 0, 0);
     return now.getTime() === date.getTime();
-}
-
-export function isRequire(date:Date)
-{
-    const now = Pool.get(Date);
-    now.setTime(Date.now());
-    const offset = Pool.get(Date);
-    offset.setTime(date.getTime());
-    offset.setHours(12 + 24, 0, 0, 0);
-    
-    Pool.free(Date, now, offset);
-    return now > offset;
 }
 
 export function isHoliday(date:Date)

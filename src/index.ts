@@ -1,5 +1,3 @@
-import ArrayUtil from './ArrayUtil';
-import BezierUtil from './BezierUtil';
 import classNames from './classNames';
 import Cursor from './Cursor';
 import DateUtil from './DateUtil';
@@ -12,8 +10,6 @@ import StringUtil from './StringUtil';
 import Validate from './Validate';
 
 export * from './scaleDown';
-export {ArrayUtil};
-export {BezierUtil};
 export {classNames};
 export {Cursor};
 export {DateUtil};
