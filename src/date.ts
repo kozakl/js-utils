@@ -115,18 +115,18 @@ export function isHoliday(date:Date)
            isEasterOrCC(date);
 }
 
-function isWeekend(date:Date)
+export function isWeekend(date:Date)
 {
     return date.getDay() == 6 ||
            date.getDay() == 0;
 }
 
-function isRegularHoliday(date:Date)
+export function isRegularHoliday(date:Date)
 {
     return regularHolidays.includes(toISO(date, false));
 }
 
-function isEasterOrCC(date:Date)
+export function isEasterOrCC(date:Date)
 {
     const year   = date.getFullYear(),
           golden = year % 19;
