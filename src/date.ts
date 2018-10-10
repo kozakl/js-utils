@@ -84,16 +84,6 @@ export function dayShortNameAt(index:number)
     return daysShort[index];
 }
 
-export function dateOffset(offset:number)
-{
-    const date = new Date();
-    date.setTime(Date.now());
-    date.setDate(date.getDate() + offset);
-    date.setHours(0, 0, 0, 0);
-    
-    return date;
-}
-
 export function daysBetween(days:Date[], start:Date, end:Date)
 {
     Pool.freeArray(Date, days);
