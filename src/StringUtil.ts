@@ -18,13 +18,6 @@ export default class StringUtil
                str.substring(end);
     }
     
-    public static replace(str:string, insert:string,
-                                      start:number,
-                                      end:number) {
-        return str.substring(0, start) + insert +
-               str.substring(end);
-    }
-    
     public static pad1(n:number)
     {
         if (n < 10)
@@ -39,13 +32,5 @@ export default class StringUtil
         else if (n < 100)
             return '0' + n;
         return '' + n;
-    }
-    
-    public static backSearch(str:string, char:string,
-                                         position:number) {
-        for (let i = position; i--;) {
-            if (str[i] === char)
-                return i;
-        }
     }
 }
