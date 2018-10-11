@@ -19,3 +19,8 @@ export function shuffle<T>(array:T[])
     
     return array;
 }
+
+export function first<T>(array:T[])
+{
+    return array[0];
+}
