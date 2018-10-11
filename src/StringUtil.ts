@@ -1,12 +1,12 @@
 export default class StringUtil
 {
-    public static firstToLower(str:string)
+    public static lowerFirst(str:string)
     {
         return str.substr(0, 1).toLowerCase() +
                str.substr(1);
     }
     
-    public static firstToUpper(str:string)
+    public static upperFirst(str:string)
     {
         return str.substr(0, 1).toUpperCase() +
                str.substr(1);
