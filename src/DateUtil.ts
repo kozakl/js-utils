@@ -1,5 +1,5 @@
 import Pool from './Pool';
-import StringUtil from './StringUtil';
+import String from './StringUtil';
 
 export default class DateUtil
 {
@@ -181,10 +181,10 @@ export default class DateUtil
     {
         if (year)
             return date.getFullYear() + '-' + 
-                   StringUtil.pad1(date.getMonth() + 1) + '-' + 
-                   StringUtil.pad1(date.getDate());
+                   String.pad1(date.getMonth() + 1) + '-' + 
+                   String.pad1(date.getDate());
         else
-            return StringUtil.pad1(date.getMonth() + 1) + '-' + 
-                   StringUtil.pad1(date.getDate());
+            return String.pad1(date.getMonth() + 1) + '-' + 
+                   String.pad1(date.getDate());
     }
 }

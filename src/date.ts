@@ -1,5 +1,5 @@
 import Pool from './Pool';
-import StringUtil from './StringUtil';
+import {pad1} from './string';
 
 const months = {
     en: [
@@ -155,9 +155,9 @@ export function toISO(date:Date, year = true)
 {
     if (year)
         return date.getFullYear() + '-' + 
-               StringUtil.pad1(date.getMonth() + 1) + '-' + 
-               StringUtil.pad1(date.getDate());
+               pad1(date.getMonth() + 1) + '-' + 
+               pad1(date.getDate());
     else
-        return StringUtil.pad1(date.getMonth() + 1) + '-' + 
-               StringUtil.pad1(date.getDate());
+        return pad1(date.getMonth() + 1) + '-' + 
+               pad1(date.getDate());
 }
