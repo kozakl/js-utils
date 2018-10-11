@@ -1,3 +1,13 @@
+export function first<T>(array:T[])
+{
+    return array[0];
+}
+
+export function last<T>(array:T[])
+{
+    return array[array.length - 1];
+}
+
 export function removeNull<T>(array:T[])
 {
     for (let i = array.length; i--;) {
@@ -18,14 +28,4 @@ export function shuffle<T>(array:T[])
     }
     
     return array;
-}
-
-export function first<T>(array:T[])
-{
-    return array[0];
-}
-
-export function last<T>(array:T[])
-{
-    return array[array.length - 1];
 }
