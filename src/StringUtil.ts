@@ -12,8 +12,8 @@ export default class StringUtil
                str.substr(1);
     }
     
-    public static remove(str:string, start:number,
-                                     end:number) {
+    public static removeString(str:string, start:number,
+                                           end:number) {
         return str.substring(0, start) +
                str.substring(end);
     }
