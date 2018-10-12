@@ -1,5 +1,5 @@
 import Pool from './Pool';
-import StringUtil from './StringUtil';
+import {pad1} from './string';
 
 const months = {
     en: [
@@ -115,27 +115,27 @@ export function isHoliday(date:Date)
            isEasterOrCC(date);
 }
 
-function isWeekend(date:Date)
+export function isWeekend(date:Date)
 {
     return date.getDay() == 6 ||
            date.getDay() == 0;
 }
 
-function isRegularHoliday(date:Date)
+export function isRegularHoliday(date:Date)
 {
     return regularHolidays.includes(toISO(date, false));
 }
 
-function isEasterOrCC(date:Date)
+export function isEasterOrCC(date:Date)
 {
-    const year   = date.getFullYear(),
-          golden = year % 19;
+    const year = date.getFullYear(),
+          golden = date.getFullYear() % 19;
     let ratio = (golden * 11 + 5) % 30;
     if (ratio === 0 || (ratio === 1 && golden > 10))
         ratio++;
-    let month = (1 <= ratio && ratio <= 19) ? 3 : 2,
-        day   = (50 - ratio) % 31;
     
+    let month = (1 <= ratio && ratio <= 19) ? 3 : 2,
+        day = (50 - ratio) % 31;
     const easter = Pool.get<Date>(Date, true);
     easter.setHours(0, 0, 0, 0);
     easter.setFullYear(year);
@@ -155,9 +155,9 @@ export function toISO(date:Date, year = true)
 {
     if (year)
         return date.getFullYear() + '-' + 
-               StringUtil.pad1(date.getMonth() + 1) + '-' + 
-               StringUtil.pad1(date.getDate());
+               pad1(date.getMonth() + 1) + '-' + 
+               pad1(date.getDate());
     else
-        return StringUtil.pad1(date.getMonth() + 1) + '-' + 
-               StringUtil.pad1(date.getDate());
+        return pad1(date.getMonth() + 1) + '-' + 
+               pad1(date.getDate());
 }

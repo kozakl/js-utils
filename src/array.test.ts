@@ -1,4 +1,14 @@
-import {removeNull, shuffle} from './array';
+import {first, last, removeNull, shuffle} from './array';
+
+test('first', ()=> {
+    expect(first([])).toEqual(undefined);
+    expect(first([1, 2])).toEqual(1);
+});
+
+test('last', ()=> {
+    expect(last([])).toEqual(undefined);
+    expect(last([1, 2])).toEqual(2);
+});
 
 test('removeNull', ()=> {
     const original = [null, 1, null, 3, null],

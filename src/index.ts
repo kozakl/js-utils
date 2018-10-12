@@ -6,7 +6,6 @@ import JSONUtil from './JSONUtil';
 import MathUtil from './MathUtil';
 import Pool from './Pool';
 import range from './range';
-import StringUtil from './StringUtil';
 import Validate from './Validate';
 
 export * from './scaleDown';
@@ -18,5 +17,4 @@ export {JSONUtil};
 export {MathUtil};
 export {Pool};
 export {range};
-export {StringUtil};
 export {Validate};
