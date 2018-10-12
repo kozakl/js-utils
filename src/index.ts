@@ -1,5 +1,3 @@
-import ArrayUtil from './ArrayUtil';
-import BezierUtil from './BezierUtil';
 import classNames from './classNames';
 import Cursor from './Cursor';
 import DateUtil from './DateUtil';
@@ -8,12 +6,9 @@ import JSONUtil from './JSONUtil';
 import MathUtil from './MathUtil';
 import Pool from './Pool';
 import range from './range';
-import StringUtil from './StringUtil';
 import Validate from './Validate';
 
 export * from './scaleDown';
-export {ArrayUtil};
-export {BezierUtil};
 export {classNames};
 export {Cursor};
 export {DateUtil};
@@ -22,5 +17,4 @@ export {JSONUtil};
 export {MathUtil};
 export {Pool};
 export {range};
-export {StringUtil};
 export {Validate};

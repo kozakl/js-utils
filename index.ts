@@ -1,10 +1,9 @@
-import ArrayUtil from './src/ArrayUtil';
 import BezierUtil from './src/BezierUtil';
 import Cursor from './src/Cursor';
 import MathUtil from './src/MathUtil';
 import Pool from './src/Pool';
 import range from './src/range';
-import StringUtil from './src/StringUtil';
+import String from './src/StringUtil';
 import classNames from './src/classNames';
 import DateUtil from './src/DateUtil';
 /**

@@ -1,17 +1,17 @@
 import Pool from './Pool';
-import StringUtil from './StringUtil';
+import {pad1} from './string';
 
 const months = {
     en: [
         'January', 'February', 'March',
-        'April',   'May',      'June',
-        'July',    'August',   'September',
+        'April', 'May', 'June',
+        'July', 'August', 'September',
         'October', 'November', 'December'
     ],
     pl: [
-        'Styczen',     'Luty',     'Marzec',
-        'Kwiecień',    'Maj',      'Czerwiec',
-        'Lipiec',      'Sierpień', 'Wrzesień',
+        'Styczen', 'Luty', 'Marzec',
+        'Kwiecień', 'Maj',  'Czerwiec',
+        'Lipiec', 'Sierpień', 'Wrzesień',
         'Październik', 'Listopad', 'Grudzień'
     ]
 };
@@ -84,20 +84,8 @@ export function dayShortNameAt(index:number)
     return daysShort[index];
 }
 
-export function dateOffset(offset:number)
-{
-    const date = new Date();
-    date.setTime(Date.now());
-    date.setDate(date.getDate() + offset);
-    date.setHours(0, 0, 0, 0);
-    
-    return date;
-}
-
 export function daysBetween(days:Date[], start:Date, end:Date)
 {
-    Pool.freeArray(Date, days);
-    
     const current = Pool.get<Date>(Date);
     current.setTime(start.getTime());
     while (current.getTime() <= end.getTime()) {
@@ -120,18 +108,6 @@ export function isToday(date:Date)
     return now.getTime() === date.getTime();
 }
 
-export function isRequire(date:Date)
-{
-    const now = Pool.get(Date);
-    now.setTime(Date.now());
-    const offset = Pool.get(Date);
-    offset.setTime(date.getTime());
-    offset.setHours(12 + 24, 0, 0, 0);
-    
-    Pool.free(Date, now, offset);
-    return now > offset;
-}
-
 export function isHoliday(date:Date)
 {
     return isWeekend(date) ||
@@ -139,27 +115,27 @@ export function isHoliday(date:Date)
            isEasterOrCC(date);
 }
 
-function isWeekend(date:Date)
+export function isWeekend(date:Date)
 {
     return date.getDay() == 6 ||
            date.getDay() == 0;
 }
 
-function isRegularHoliday(date:Date)
+export function isRegularHoliday(date:Date)
 {
     return regularHolidays.includes(toISO(date, false));
 }
 
-function isEasterOrCC(date:Date)
+export function isEasterOrCC(date:Date)
 {
-    const year   = date.getFullYear(),
-          golden = year % 19;
+    const year = date.getFullYear(),
+          golden = date.getFullYear() % 19;
     let ratio = (golden * 11 + 5) % 30;
     if (ratio === 0 || (ratio === 1 && golden > 10))
         ratio++;
-    let month = (1 <= ratio && ratio <= 19) ? 3 : 2,
-        day   = (50 - ratio) % 31;
     
+    let month = (1 <= ratio && ratio <= 19) ? 3 : 2,
+        day = (50 - ratio) % 31;
     const easter = Pool.get<Date>(Date, true);
     easter.setHours(0, 0, 0, 0);
     easter.setFullYear(year);
@@ -179,9 +155,9 @@ export function toISO(date:Date, year = true)
 {
     if (year)
         return date.getFullYear() + '-' + 
-               StringUtil.pad1(date.getMonth() + 1) + '-' + 
-               StringUtil.pad1(date.getDate());
+               pad1(date.getMonth() + 1) + '-' + 
+               pad1(date.getDate());
     else
-        return StringUtil.pad1(date.getMonth() + 1) + '-' + 
-               StringUtil.pad1(date.getDate());
+        return pad1(date.getMonth() + 1) + '-' + 
+               pad1(date.getDate());
 }
