@@ -57,6 +57,14 @@ export function pointOnQuadCurveX(x1:number, cx:number,
     return x1 + t * (2*ax + t*bx);
 }
 
+export function pointOnQuadCurveY(y1:number, cy:number,
+                                  y2:number, t:number) {
+    const ay = cy - y1,
+          by = y2 - cy - ay;
+    
+    return y1 + t * (2*ay + t*by);
+}
+
 interface Result {
     x?:number;
     y?:number;
