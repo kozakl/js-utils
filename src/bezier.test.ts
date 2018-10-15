@@ -1,6 +1,6 @@
 import {pointOnCubicCurve, pointOnCubicCurveX,
         pointOnCubicCurveY, pointOnQuadCurve,
-        pointOnQuadCurveX} from './bezier';
+        pointOnQuadCurveX, pointOnQuadCurveY} from './bezier';
 
 test('pointOnCubicCurve', ()=> {
     const result = pointOnCubicCurve(1, 1, 10, 10, -10, -10, 1, 1, 0.5, {});
@@ -24,5 +24,10 @@ test('pointOnQuadCurve', ()=> {
 
 test('pointOnQuadCurveX', ()=> {
     const result = pointOnQuadCurveX(1, 10, 1, 0.5);
+    expect(result).toEqual(5.5);
+});
+
+test('pointOnQuadCurveY', ()=> {
+    const result = pointOnQuadCurveY(1, 10, 1, 0.5);
     expect(result).toEqual(5.5);
 });
