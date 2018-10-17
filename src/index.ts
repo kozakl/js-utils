@@ -1,20 +1,7 @@
-import classNames from './classNames';
-import Cursor from './Cursor';
-import DateUtil from './DateUtil';
-import FullScreen from './FullScreen';
-import JSONUtil from './JSONUtil';
-import MathUtil from './MathUtil';
-import Pool from './Pool';
-import range from './range';
-import Validate from './Validate';
-
-export * from './scaleDown';
-export {classNames};
-export {Cursor};
-export {DateUtil};
-export {FullScreen};
-export {JSONUtil};
-export {MathUtil};
-export {Pool};
-export {range};
-export {Validate};
+export {default as classNames} from './classNames';
+export {default as FullScreen} from './FullScreen';
+export {default as partial} from './partial';
+export {default as pipe} from './pipe';
+export {default as Pool} from './Pool';
+export {default as range} from './range';
+export {default as scaleDown} from './scaleDown';

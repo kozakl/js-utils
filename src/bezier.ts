@@ -49,6 +49,22 @@ export function pointOnQuadCurve(x1:number, y1:number,
     return result;
 }
 
+export function pointOnQuadCurveX(x1:number, cx:number,
+                                  x2:number, t:number) {
+    const ax = cx - x1,
+          bx = x2 - cx - ax;
+    
+    return x1 + t * (2*ax + t*bx);
+}
+
+export function pointOnQuadCurveY(y1:number, cy:number,
+                                  y2:number, t:number) {
+    const ay = cy - y1,
+          by = y2 - cy - ay;
+    
+    return y1 + t * (2*ay + t*by);
+}
+
 interface Result {
     x?:number;
     y?:number;
