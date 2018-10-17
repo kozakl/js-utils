@@ -1,131 +1,154 @@
 import {monthName, monthNameAt, monthShortName,
-    monthShortNameAt, dayName, dayNameAt, dayShortName, dayShortNameAt, dateOffset, daysBetween,
-isToday, isRequire, isHoliday, toISO } from './date';
+        monthShortNameAt, dayName, dayNameAt,
+        dayShortName, dayShortNameAt, daysBetween,
+        isToday, isHoliday, isWeekend, toISO} from './date';
 
-test('getMonthName', ()=> {
-    expect(DateUtil.getMonthName(new Date(2018, 0))).toBe('Styczen');
-    expect(DateUtil.getMonthName(new Date(2018, 1))).toBe('Luty');
-    expect(DateUtil.getMonthName(new Date(2018, 2))).toBe('Marzec');
-    expect(DateUtil.getMonthName(new Date(2018, 3))).toBe('Kwiecień');
-    expect(DateUtil.getMonthName(new Date(2018, 4))).toBe('Maj');
-    expect(DateUtil.getMonthName(new Date(2018, 5))).toBe('Czerwiec');
-    expect(DateUtil.getMonthName(new Date(2018, 6))).toBe('Lipiec');
-    expect(DateUtil.getMonthName(new Date(2018, 7))).toBe('Sierpień');
-    expect(DateUtil.getMonthName(new Date(2018, 8))).toBe('Wrzesień');
-    expect(DateUtil.getMonthName(new Date(2018, 9))).toBe('Październik');
-    expect(DateUtil.getMonthName(new Date(2018, 10))).toBe('Listopad');
-    expect(DateUtil.getMonthName(new Date(2018, 11))).toBe('Grudzień');
+test('monthName', ()=> {
+    expect(monthName(new Date(2018, 0))).toBe('Styczen');
+    expect(monthName(new Date(2018, 1))).toBe('Luty');
+    expect(monthName(new Date(2018, 2))).toBe('Marzec');
+    expect(monthName(new Date(2018, 3))).toBe('Kwiecień');
+    expect(monthName(new Date(2018, 4))).toBe('Maj');
+    expect(monthName(new Date(2018, 5))).toBe('Czerwiec');
+    expect(monthName(new Date(2018, 6))).toBe('Lipiec');
+    expect(monthName(new Date(2018, 7))).toBe('Sierpień');
+    expect(monthName(new Date(2018, 8))).toBe('Wrzesień');
+    expect(monthName(new Date(2018, 9))).toBe('Październik');
+    expect(monthName(new Date(2018, 10))).toBe('Listopad');
+    expect(monthName(new Date(2018, 11))).toBe('Grudzień');
+    expect(monthName(new Date(2018, 0), 'en')).toBe('January');
+    expect(monthName(new Date(2018, 1), 'en')).toBe('February');
+    expect(monthName(new Date(2018, 2), 'en')).toBe('March');
+    expect(monthName(new Date(2018, 3), 'en')).toBe('April');
+    expect(monthName(new Date(2018, 4), 'en')).toBe('May');
+    expect(monthName(new Date(2018, 5), 'en')).toBe('June');
+    expect(monthName(new Date(2018, 6), 'en')).toBe('July');
+    expect(monthName(new Date(2018, 7), 'en')).toBe('August');
+    expect(monthName(new Date(2018, 8), 'en')).toBe('September');
+    expect(monthName(new Date(2018, 9), 'en')).toBe('October');
+    expect(monthName(new Date(2018, 10), 'en')).toBe('November');
+    expect(monthName(new Date(2018, 11), 'en')).toBe('December');
 });
 
-test('getMonthNameAt', ()=> {
-    expect(DateUtil.getMonthNameAt(0)).toBe('Styczen');
-    expect(DateUtil.getMonthNameAt(1)).toBe('Luty');
-    expect(DateUtil.getMonthNameAt(2)).toBe('Marzec');
-    expect(DateUtil.getMonthNameAt(3)).toBe('Kwiecień');
-    expect(DateUtil.getMonthNameAt(4)).toBe('Maj');
-    expect(DateUtil.getMonthNameAt(5)).toBe('Czerwiec');
-    expect(DateUtil.getMonthNameAt(6)).toBe('Lipiec');
-    expect(DateUtil.getMonthNameAt(7)).toBe('Sierpień');
-    expect(DateUtil.getMonthNameAt(8)).toBe('Wrzesień');
-    expect(DateUtil.getMonthNameAt(9)).toBe('Październik');
-    expect(DateUtil.getMonthNameAt(10)).toBe('Listopad');
-    expect(DateUtil.getMonthNameAt(11)).toBe('Grudzień');
+test('monthNameAt', ()=> {
+    expect(monthNameAt(0)).toBe('Styczen');
+    expect(monthNameAt(1)).toBe('Luty');
+    expect(monthNameAt(2)).toBe('Marzec');
+    expect(monthNameAt(3)).toBe('Kwiecień');
+    expect(monthNameAt(4)).toBe('Maj');
+    expect(monthNameAt(5)).toBe('Czerwiec');
+    expect(monthNameAt(6)).toBe('Lipiec');
+    expect(monthNameAt(7)).toBe('Sierpień');
+    expect(monthNameAt(8)).toBe('Wrzesień');
+    expect(monthNameAt(9)).toBe('Październik');
+    expect(monthNameAt(10)).toBe('Listopad');
+    expect(monthNameAt(11)).toBe('Grudzień');
+    expect(monthNameAt(0, 'en')).toBe('January');
+    expect(monthNameAt(1, 'en')).toBe('February');
+    expect(monthNameAt(2, 'en')).toBe('March');
+    expect(monthNameAt(3, 'en')).toBe('April');
+    expect(monthNameAt(4, 'en')).toBe('May');
+    expect(monthNameAt(5, 'en')).toBe('June');
+    expect(monthNameAt(6, 'en')).toBe('July');
+    expect(monthNameAt(7, 'en')).toBe('August');
+    expect(monthNameAt(8, 'en')).toBe('September');
+    expect(monthNameAt(9, 'en')).toBe('October');
+    expect(monthNameAt(10, 'en')).toBe('November');
+    expect(monthNameAt(11, 'en')).toBe('December');
 });
 
-test('getMonthShortName', ()=> {
-    expect(DateUtil.getMonthShortName(new Date(2018, 0))).toBe('Sty');
-    expect(DateUtil.getMonthShortName(new Date(2018, 1))).toBe('Lut');
-    expect(DateUtil.getMonthShortName(new Date(2018, 2))).toBe('Mar');
-    expect(DateUtil.getMonthShortName(new Date(2018, 3))).toBe('Kwi');
-    expect(DateUtil.getMonthShortName(new Date(2018, 4))).toBe('Maj');
-    expect(DateUtil.getMonthShortName(new Date(2018, 5))).toBe('Cze');
-    expect(DateUtil.getMonthShortName(new Date(2018, 6))).toBe('Lip');
-    expect(DateUtil.getMonthShortName(new Date(2018, 7))).toBe('Sie');
-    expect(DateUtil.getMonthShortName(new Date(2018, 8))).toBe('Wrz');
-    expect(DateUtil.getMonthShortName(new Date(2018, 9))).toBe('Paź');
-    expect(DateUtil.getMonthShortName(new Date(2018, 10))).toBe('Lis');
-    expect(DateUtil.getMonthShortName(new Date(2018, 11))).toBe('Gru');
+test('monthShortName', ()=> {
+    expect(monthShortName(new Date(2018, 0))).toBe('Sty');
+    expect(monthShortName(new Date(2018, 1))).toBe('Lut');
+    expect(monthShortName(new Date(2018, 2))).toBe('Mar');
+    expect(monthShortName(new Date(2018, 3))).toBe('Kwi');
+    expect(monthShortName(new Date(2018, 4))).toBe('Maj');
+    expect(monthShortName(new Date(2018, 5))).toBe('Cze');
+    expect(monthShortName(new Date(2018, 6))).toBe('Lip');
+    expect(monthShortName(new Date(2018, 7))).toBe('Sie');
+    expect(monthShortName(new Date(2018, 8))).toBe('Wrz');
+    expect(monthShortName(new Date(2018, 9))).toBe('Paź');
+    expect(monthShortName(new Date(2018, 10))).toBe('Lis');
+    expect(monthShortName(new Date(2018, 11))).toBe('Gru');
 });
 
-test('getMonthShortNameAt', ()=> {
-    expect(DateUtil.getMonthShortNameAt(0)).toBe('Sty');
-    expect(DateUtil.getMonthShortNameAt(1)).toBe('Lut');
-    expect(DateUtil.getMonthShortNameAt(2)).toBe('Mar');
-    expect(DateUtil.getMonthShortNameAt(3)).toBe('Kwi');
-    expect(DateUtil.getMonthShortNameAt(4)).toBe('Maj');
-    expect(DateUtil.getMonthShortNameAt(5)).toBe('Cze');
-    expect(DateUtil.getMonthShortNameAt(6)).toBe('Lip');
-    expect(DateUtil.getMonthShortNameAt(7)).toBe('Sie');
-    expect(DateUtil.getMonthShortNameAt(8)).toBe('Wrz');
-    expect(DateUtil.getMonthShortNameAt(9)).toBe('Paź');
-    expect(DateUtil.getMonthShortNameAt(10)).toBe('Lis');
-    expect(DateUtil.getMonthShortNameAt(11)).toBe('Gru');
+test('monthShortNameAt', ()=> {
+    expect(monthShortNameAt(0)).toBe('Sty');
+    expect(monthShortNameAt(1)).toBe('Lut');
+    expect(monthShortNameAt(2)).toBe('Mar');
+    expect(monthShortNameAt(3)).toBe('Kwi');
+    expect(monthShortNameAt(4)).toBe('Maj');
+    expect(monthShortNameAt(5)).toBe('Cze');
+    expect(monthShortNameAt(6)).toBe('Lip');
+    expect(monthShortNameAt(7)).toBe('Sie');
+    expect(monthShortNameAt(8)).toBe('Wrz');
+    expect(monthShortNameAt(9)).toBe('Paź');
+    expect(monthShortNameAt(10)).toBe('Lis');
+    expect(monthShortNameAt(11)).toBe('Gru');
 });
 
-test('getDayName', ()=> {
-    expect(DateUtil.getDayName(new Date(2018, 3, 8))).toBe('Niedziela');
-    expect(DateUtil.getDayName(new Date(2018, 3, 9))).toBe('Poniedziałek');
-    expect(DateUtil.getDayName(new Date(2018, 3, 10))).toBe('Wtorek');
-    expect(DateUtil.getDayName(new Date(2018, 3, 11))).toBe('Środa');
-    expect(DateUtil.getDayName(new Date(2018, 3, 12))).toBe('Czwartek');
-    expect(DateUtil.getDayName(new Date(2018, 3, 13))).toBe('Piątek');
-    expect(DateUtil.getDayName(new Date(2018, 3, 14))).toBe('Sobota');
+test('dayName', ()=> {
+    expect(dayName(new Date(2018, 3, 8))).toBe('Niedziela');
+    expect(dayName(new Date(2018, 3, 9))).toBe('Poniedziałek');
+    expect(dayName(new Date(2018, 3, 10))).toBe('Wtorek');
+    expect(dayName(new Date(2018, 3, 11))).toBe('Środa');
+    expect(dayName(new Date(2018, 3, 12))).toBe('Czwartek');
+    expect(dayName(new Date(2018, 3, 13))).toBe('Piątek');
+    expect(dayName(new Date(2018, 3, 14))).toBe('Sobota');
+    expect(dayName(new Date(2018, 3, 8), 'en')).toBe('Sunday');
+    expect(dayName(new Date(2018, 3, 9), 'en')).toBe('Monday');
+    expect(dayName(new Date(2018, 3, 10), 'en')).toBe('Tuesday');
+    expect(dayName(new Date(2018, 3, 11), 'en')).toBe('Wednesday');
+    expect(dayName(new Date(2018, 3, 12), 'en')).toBe('Thursday');
+    expect(dayName(new Date(2018, 3, 13), 'en')).toBe('Friday');
+    expect(dayName(new Date(2018, 3, 14), 'en')).toBe('Saturday');
 });
 
-test('getDayNameAt', ()=> {
-    expect(DateUtil.getDayNameAt(0)).toBe('Niedziela');
-    expect(DateUtil.getDayNameAt(1)).toBe('Poniedziałek');
-    expect(DateUtil.getDayNameAt(2)).toBe('Wtorek');
-    expect(DateUtil.getDayNameAt(3)).toBe('Środa');
-    expect(DateUtil.getDayNameAt(4)).toBe('Czwartek');
-    expect(DateUtil.getDayNameAt(5)).toBe('Piątek');
-    expect(DateUtil.getDayNameAt(6)).toBe('Sobota');
+test('dayNameAt', ()=> {
+    expect(dayNameAt(0)).toBe('Niedziela');
+    expect(dayNameAt(1)).toBe('Poniedziałek');
+    expect(dayNameAt(2)).toBe('Wtorek');
+    expect(dayNameAt(3)).toBe('Środa');
+    expect(dayNameAt(4)).toBe('Czwartek');
+    expect(dayNameAt(5)).toBe('Piątek');
+    expect(dayNameAt(6)).toBe('Sobota');
+    expect(dayNameAt(0, 'en')).toBe('Sunday');
+    expect(dayNameAt(1, 'en')).toBe('Monday');
+    expect(dayNameAt(2, 'en')).toBe('Tuesday');
+    expect(dayNameAt(3, 'en')).toBe('Wednesday');
+    expect(dayNameAt(4, 'en')).toBe('Thursday');
+    expect(dayNameAt(5, 'en')).toBe('Friday');
+    expect(dayNameAt(6, 'en')).toBe('Saturday');
 });
 
-test('getDayShortName', ()=> {
-    expect(DateUtil.getDayShortName(new Date(2018, 3, 8))).toBe('Nd');
-    expect(DateUtil.getDayShortName(new Date(2018, 3, 9))).toBe('Pn');
-    expect(DateUtil.getDayShortName(new Date(2018, 3, 10))).toBe('Wt');
-    expect(DateUtil.getDayShortName(new Date(2018, 3, 11))).toBe('Śr');
-    expect(DateUtil.getDayShortName(new Date(2018, 3, 12))).toBe('Cz');
-    expect(DateUtil.getDayShortName(new Date(2018, 3, 13))).toBe('Pt');
-    expect(DateUtil.getDayShortName(new Date(2018, 3, 14))).toBe('Sb');
+test('dayShortName', ()=> {
+    expect(dayShortName(new Date(2018, 3, 8))).toBe('Nd');
+    expect(dayShortName(new Date(2018, 3, 9))).toBe('Pn');
+    expect(dayShortName(new Date(2018, 3, 10))).toBe('Wt');
+    expect(dayShortName(new Date(2018, 3, 11))).toBe('Śr');
+    expect(dayShortName(new Date(2018, 3, 12))).toBe('Cz');
+    expect(dayShortName(new Date(2018, 3, 13))).toBe('Pt');
+    expect(dayShortName(new Date(2018, 3, 14))).toBe('Sb');
 });
 
-test('getDayShortNameAt', ()=> {
-    expect(DateUtil.getDayShortNameAt(0)).toBe('Nd');
-    expect(DateUtil.getDayShortNameAt(1)).toBe('Pn');
-    expect(DateUtil.getDayShortNameAt(2)).toBe('Wt');
-    expect(DateUtil.getDayShortNameAt(3)).toBe('Śr');
-    expect(DateUtil.getDayShortNameAt(4)).toBe('Cz');
-    expect(DateUtil.getDayShortNameAt(5)).toBe('Pt');
-    expect(DateUtil.getDayShortNameAt(6)).toBe('Sb');
+test('dayShortNameAt', ()=> {
+    expect(dayShortNameAt(0)).toBe('Nd');
+    expect(dayShortNameAt(1)).toBe('Pn');
+    expect(dayShortNameAt(2)).toBe('Wt');
+    expect(dayShortNameAt(3)).toBe('Śr');
+    expect(dayShortNameAt(4)).toBe('Cz');
+    expect(dayShortNameAt(5)).toBe('Pt');
+    expect(dayShortNameAt(6)).toBe('Sb');
 });
 
-test('getDateOffset', ()=> {
-    let date = new Date();
-    date.setHours(0, 0, 0, 0);
-    expect(DateUtil.getDateOffset(0).toString()).toBe(date.toString());
-    
-    date = new Date();
-    date.setHours(0, 0, 0, 0);
-    date.setDate(date.getDate() - 10);
-    expect(DateUtil.getDateOffset(-10).toString()).toBe(date.toString());
-    
-    date = new Date();
-    date.setHours(0, 0, 0, 0);
-    date.setDate(date.getDate() + 10);
-    expect(DateUtil.getDateOffset(10).toString()).toBe(date.toString());
-});
-
-test('getDaysBetween', ()=> {
+test('daysBetween', ()=> {
     const start = new Date();
     start.setHours(0, 0, 0, 0);
     start.setDate(start.getDate() - 2);
     const end = new Date();
     end.setHours(0, 0, 0, 0);
     end.setDate(end.getDate() + 1);
-    const days = DateUtil.getDaysBetween([], start, end);
+    const days = daysBetween([], start, end);
     
     let date = new Date(start);
     expect(days[0].toString()).toBe(date.toString());
@@ -146,60 +169,52 @@ test('getDaysBetween', ()=> {
 test('isToday', ()=> {
     let date = new Date();
     date.setHours(0, 0, 0, 0);
-    expect(DateUtil.isToday(date)).toBeTruthy();
+    expect(isToday(date)).toBeTruthy();
     
     date = new Date();
     date.setHours(0, 0, 0, 0);
     date.setDate(date.getDate() -1);
-    expect(DateUtil.isToday(date)).toBeFalsy();
-});
-
-test('isRequire', ()=> {
-    let date = new Date();
-    date.setDate(date.getDate() - 2);
-    expect(DateUtil.isRequire(date)).toBeTruthy();
-    
-    date = new Date();
-    date.setDate(date.getDate() + 1);
-    expect(DateUtil.isRequire(date)).toBeFalsy();
-    
-    date = new Date();
-    date.setHours(12 + 24, 0, 0, 0);
-    if (new Date() > date)
-        expect(DateUtil.isRequire(new Date())).toBeTruthy();
-    else
-        expect(DateUtil.isRequire(new Date())).toBeFalsy();
+    expect(isToday(date)).toBeFalsy();
 });
 
 test('isHoliday', ()=> {
-    expect(DateUtil.isHoliday(new Date(2018, 4, 30))).toBeFalsy();
-    expect(DateUtil.isHoliday(new Date(2018, 3, 5))).toBeFalsy();
-    expect(DateUtil.isHoliday(new Date(2018, 3, 7))).toBeTruthy(); // Saturday
-    expect(DateUtil.isHoliday(new Date(2019, 2, 9))).toBeTruthy(); // Saturday
-    expect(DateUtil.isHoliday(new Date(2018, 4, 13))).toBeTruthy(); // Sunday
-    expect(DateUtil.isHoliday(new Date(2019, 2, 24))).toBeTruthy(); // Sunday
-    expect(DateUtil.isHoliday(new Date(2017, 3, 17))).toBeTruthy(); // Easter Monday
-    expect(DateUtil.isHoliday(new Date(2018, 3, 2))).toBeTruthy(); // Easter Monday
-    expect(DateUtil.isHoliday(new Date(2019, 3, 22))).toBeTruthy(); // Easter Monday
-    expect(DateUtil.isHoliday(new Date(2017, 5, 15))).toBeTruthy(); // Corpus Christi
-    expect(DateUtil.isHoliday(new Date(2018, 4, 31))).toBeTruthy(); // Corpus Christi
-    expect(DateUtil.isHoliday(new Date(2019, 5, 20))).toBeTruthy(); // Corpus Christi
-    expect(DateUtil.isHoliday(new Date(2020, 0, 1))).toBeTruthy(); // New Year Day
-    expect(DateUtil.isHoliday(new Date(2020, 0, 6))).toBeTruthy(); // Three Kings Day
-    expect(DateUtil.isHoliday(new Date(2020, 4, 1))).toBeTruthy(); // May Day
-    expect(DateUtil.isHoliday(new Date(2020, 4, 3))).toBeTruthy(); // Constitution Day
-    expect(DateUtil.isHoliday(new Date(2020, 7, 15))).toBeTruthy(); // Assumption of Mary
-    expect(DateUtil.isHoliday(new Date(2020, 10, 1))).toBeTruthy(); // All Saints Day
-    expect(DateUtil.isHoliday(new Date(2020, 10, 11))).toBeTruthy(); // Independence Day
-    expect(DateUtil.isHoliday(new Date(2020, 11, 25))).toBeTruthy(); // Christmas Day
-    expect(DateUtil.isHoliday(new Date(2020, 11, 26))).toBeTruthy(); // Christmas Second Day
+    expect(isHoliday(new Date(2018, 4, 30))).toBeFalsy();
+    expect(isHoliday(new Date(2018, 3, 5))).toBeFalsy();
+    expect(isHoliday(new Date(2018, 3, 7))).toBeTruthy(); // Saturday
+    expect(isHoliday(new Date(2019, 2, 9))).toBeTruthy(); // Saturday
+    expect(isHoliday(new Date(2018, 4, 13))).toBeTruthy(); // Sunday
+    expect(isHoliday(new Date(2019, 2, 24))).toBeTruthy(); // Sunday
+    expect(isHoliday(new Date(2017, 3, 17))).toBeTruthy(); // Easter Monday
+    expect(isHoliday(new Date(2018, 3, 2))).toBeTruthy(); // Easter Monday
+    expect(isHoliday(new Date(2019, 3, 22))).toBeTruthy(); // Easter Monday
+    expect(isHoliday(new Date(2017, 5, 15))).toBeTruthy(); // Corpus Christi
+    expect(isHoliday(new Date(2018, 4, 31))).toBeTruthy(); // Corpus Christi
+    expect(isHoliday(new Date(2019, 5, 20))).toBeTruthy(); // Corpus Christi
+    expect(isHoliday(new Date(2020, 0, 1))).toBeTruthy(); // New Year Day
+    expect(isHoliday(new Date(2020, 0, 6))).toBeTruthy(); // Three Kings Day
+    expect(isHoliday(new Date(2020, 4, 1))).toBeTruthy(); // May Day
+    expect(isHoliday(new Date(2020, 4, 3))).toBeTruthy(); // Constitution Day
+    expect(isHoliday(new Date(2020, 7, 15))).toBeTruthy(); // Assumption of Mary
+    expect(isHoliday(new Date(2020, 10, 1))).toBeTruthy(); // All Saints Day
+    expect(isHoliday(new Date(2020, 10, 11))).toBeTruthy(); // Independence Day
+    expect(isHoliday(new Date(2020, 11, 25))).toBeTruthy(); // Christmas Day
+    expect(isHoliday(new Date(2020, 11, 26))).toBeTruthy(); // Christmas Second Day
+});
+
+test('isWeekend', ()=> {
+    expect(isWeekend(new Date(2018, 4, 30))).toBeFalsy();
+    expect(isWeekend(new Date(2018, 3, 5))).toBeFalsy();
+    expect(isWeekend(new Date(2018, 3, 7))).toBeTruthy(); // Saturday
+    expect(isWeekend(new Date(2019, 2, 9))).toBeTruthy(); // Saturday
+    expect(isWeekend(new Date(2018, 4, 13))).toBeTruthy(); // Sunday
+    expect(isWeekend(new Date(2019, 2, 24))).toBeTruthy(); // Sunday
 });
 
 test('toISO', ()=> {
-    expect(DateUtil.toISO(new Date(2018, 0, 31))).toBe('2018-01-31');
-    expect(DateUtil.toISO(new Date(2018, 1, 28))).toBe('2018-02-28');
-    expect(DateUtil.toISO(new Date(2018, 11, 1))).toBe('2018-12-01');
-    expect(DateUtil.toISO(new Date(2018, 0, 31), false)).toBe('01-31');
-    expect(DateUtil.toISO(new Date(2018, 1, 28), false)).toBe('02-28');
-    expect(DateUtil.toISO(new Date(2018, 11, 1), false)).toBe('12-01');
+    expect(toISO(new Date(2018, 0, 31))).toBe('2018-01-31');
+    expect(toISO(new Date(2018, 1, 28))).toBe('2018-02-28');
+    expect(toISO(new Date(2018, 11, 1))).toBe('2018-12-01');
+    expect(toISO(new Date(2018, 0, 31), false)).toBe('01-31');
+    expect(toISO(new Date(2018, 1, 28), false)).toBe('02-28');
+    expect(toISO(new Date(2018, 11, 1), false)).toBe('12-01');
 });
