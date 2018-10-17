@@ -5,24 +5,24 @@ interface Element extends HTMLElement {
 
 export default class FullScreen
 {
-    public static CHANGE = (<Element>document.documentElement).requestFullscreen       && 'fullscreenchange'       ||
+    public static CHANGE = (<Element>document.documentElement).requestFullscreen && 'fullscreenchange' ||
                            (<Element>document.documentElement).webkitRequestFullscreen && 'webkitfullscreenchange' ||
-                           (<Element>document.documentElement).mozRequestFullScreen    && 'mozfullscreenchange'    ||
-                           (<Element>document.documentElement).msRequestFullscreen     && 'MSFullscreenChange';
+                           (<Element>document.documentElement).mozRequestFullScreen && 'mozfullscreenchange' ||
+                           (<Element>document.documentElement).msRequestFullscreen && 'MSFullscreenChange';
     
     public static isSupported()
     {
-        return !!((<Element>document.documentElement).requestFullscreen       ||
+        return !!((<Element>document.documentElement).requestFullscreen ||
                   (<Element>document.documentElement).webkitRequestFullscreen ||
-                  (<Element>document.documentElement).mozRequestFullScreen    ||
+                  (<Element>document.documentElement).mozRequestFullScreen ||
                   (<Element>document.documentElement).msRequestFullscreen);
     }
     
     public static isFullScreen()
     {
-        return !!((<Doc>document).fullscreenElement       ||
+        return !!((<Doc>document).fullscreenElement ||
                   (<Doc>document).webkitFullscreenElement ||
-                  (<Doc>document).mozFullScreenElement    ||
+                  (<Doc>document).mozFullScreenElement ||
                   (<Doc>document).msFullscreenElement);
     }
     
