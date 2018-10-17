@@ -1,4 +1,4 @@
-export function scaleDown(ratio:number, maxWidth:number, maxHeight:number)
+export default function scaleDown(ratio:number, maxWidth:number, maxHeight:number)
 {
     const width1 = maxWidth,
           height1 = maxWidth / ratio;
