@@ -1,7 +1,7 @@
 import {readdirSync, statSync} from 'fs-extra';
 import {extname, join} from 'path';
 
-export function listFiles(dir:string, filter:string[], files:string[])
+export function listFiles(dir:string, filter:string[], files:string[] = [])
 {
     readdirSync(dir).forEach((file)=> {
         if (statSync(join(dir, file)).isDirectory())
