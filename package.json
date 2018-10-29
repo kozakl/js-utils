@@ -22,7 +22,7 @@
       "^.+\\.jsx?$": "<rootDir>/node_modules/babel-jest",
       "^.+\\.tsx?$": "ts-jest"
     },
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "testRegex": "(/src/.*test)\\.(jsx?|tsx?)$",
     "moduleFileExtensions": [
       "ts",
       "tsx",
