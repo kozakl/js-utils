@@ -11,8 +11,7 @@ export default class Pool
             return autoFree ? this.free(Type, new Type()) : new Type();
     }
     
-    private static getPool(Type:any)
-    {
+    private static getPool(Type:any) {
         return this.pools[Type] || (this.pools[Type] = []);
     }
     
