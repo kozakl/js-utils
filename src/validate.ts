@@ -1,10 +1,8 @@
-export function isFill(str:string)
-{
+export function isFill(str:string) {
     return /\S/.test(str);
 }
 
-export function isEmail(str:string)
-{
+export function isEmail(str:string) {
     return /\S+@\S+\.\S+/.test(str);
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "@kozakl/utils",
-  "version": "3.1.1",
+  "version": "3.2.0",
   "sideEffects": false,
   "author": {
     "name": "Luke Kozak",
@@ -13,21 +13,19 @@
   },
   "scripts": {
     "build": "rm -rf ./dist && tsc",
-    "publish-dist": "yarn build && cp package.json ./dist && npm publish ./dist --access=public",
+    "publish-dist": "npm run build && cp package.json ./dist && npm publish ./dist --access=public",
     "test": "jest --coverage",
-    "test:watch": "yarn test -- --watchAll"
+    "test:watch": "npm run test -- --watchAll"
   },
   "jest": {
     "transform": {
-      "^.+\\.jsx?$": "<rootDir>/node_modules/babel-jest",
       "^.+\\.tsx?$": "ts-jest"
     },
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "testRegex": "(/src/.*.test)\\.tsx?$",
     "moduleFileExtensions": [
-      "ts",
-      "tsx",
       "js",
-      "jsx"
+      "ts",
+      "tsx"
     ]
   },
   "dependencies": {

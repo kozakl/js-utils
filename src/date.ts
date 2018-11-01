@@ -44,43 +44,35 @@ const regularHolidays = [
     '11-11', '12-25', '12-26'
 ];
 
-export function monthName(date:Date, lang:'pl'|'en' = 'pl')
-{
+export function monthName(date:Date, lang:'pl'|'en' = 'pl') {
     return months[lang][date.getMonth()];
 }
 
-export function monthNameAt(index:number, lang:'pl'|'en' = 'pl')
-{
+export function monthNameAt(index:number, lang:'pl'|'en' = 'pl') {
     return months[lang][index];
 }
 
-export function monthShortName(date:Date)
-{
+export function monthShortName(date:Date) {
     return monthsShort[date.getMonth()];
 }
 
-export function monthShortNameAt(index:number)
-{
+export function monthShortNameAt(index:number) {
     return monthsShort[index];
 }
 
-export function dayName(date:Date, lang:'pl'|'en' = 'pl')
-{
+export function dayName(date:Date, lang:'pl'|'en' = 'pl') {
     return days[lang][date.getDay()];
 }
 
-export function dayNameAt(index:number, lang:'pl'|'en' = 'pl')
-{
+export function dayNameAt(index:number, lang:'pl'|'en' = 'pl') {
     return days[lang][index];
 }
 
-export function dayShortName(date:Date)
-{
+export function dayShortName(date:Date) {
     return daysShort[date.getDay()];
 }
 
-export function dayShortNameAt(index:number)
-{
+export function dayShortNameAt(index:number) {
     return daysShort[index];
 }
 
@@ -121,8 +113,7 @@ export function isWeekend(date:Date)
            date.getDay() === 0;
 }
 
-function isRegularHoliday(date:Date)
-{
+function isRegularHoliday(date:Date) {
     return regularHolidays.includes(toISO(date, false));
 }
 

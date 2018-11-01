@@ -1,10 +1,8 @@
-export function first<T>(array:T[])
-{
+export function first<T>(array:T[]) {
     return array[0];
 }
 
-export function last<T>(array:T[])
-{
+export function last<T>(array:T[]) {
     return array[array.length - 1];
 }
 

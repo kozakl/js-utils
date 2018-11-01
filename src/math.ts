@@ -3,18 +3,15 @@ export const PI_D2 = Math.PI / 2;
 export const RADIANS = Math.PI / 180;
 export const DEGREES = 180 / Math.PI;
 
-export function rndRange(min:number, max:number)
-{
+export function rndRange(min:number, max:number) {
     return min + (Math.random() * (max - min));
 }
 
-export function rndIntRange(min:number, max:number)
-{
+export function rndIntRange(min:number, max:number) {
     return Math.round(rndRange(min, max));
 }
 
-export function rndSign()
-{
+export function rndSign() {
     return Math.random() > 0.5 ? 1 : -1;
 }
 
@@ -23,17 +20,14 @@ export function clamp(x:number, min:number,
     return Math.max(min, Math.min(x, max));
 }
 
-export function fabs(x:number)
-{
+export function fabs(x:number) {
     return x < 0 ? -x : x;
 }
 
-export function abs(x:number)
-{
+export function abs(x:number) {
     return (x + (x >> 31)) ^ (x >> 31);
 }
 
-export function sign(x:number)
-{
+export function sign(x:number) {
     return Math.abs(x) / x;
 }
