@@ -1,4 +1,5 @@
-import {mkdirpSync, writeFileSync, removeSync} from 'fs-extra';
+import {mkdirpSync, removeSync,
+        writeFileSync} from 'fs-extra';
 import {listFiles} from './file';
 
 test('listFiles', ()=> {
