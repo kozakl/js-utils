@@ -1,6 +1,10 @@
 import {readdirSync, statSync} from 'fs-extra';
 import {extname, join} from 'path';
 
+console.warn('utils/file is deprecated use node/file instead');
+/**
+ * @deprecated
+*/
 export function listFiles(dir:string, filter?:string[], files:string[] = [])
 {
     readdirSync(dir).forEach((file)=> {
