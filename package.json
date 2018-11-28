@@ -35,13 +35,9 @@
     "@types/fs-extra": "^5.0.4",
     "@types/jest": "^22.2.2",
     "@types/node": "^10.12.0",
-    "babel-preset-es2015": "^6.24.1",
     "jest": "^20.0.4",
-    "rest-optimize-webpack-plugin": "^1.0.1",
     "ts-jest": "^22.4.2",
     "ts-loader": "^3.1.1",
-    "typescript": "^2.9.2",
-    "webpack": "^2.6.1",
-    "webpack-core": "^0.6.9"
+    "typescript": "^2.9.2"
   }
 }
