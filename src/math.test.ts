@@ -1,4 +1,5 @@
-import {rndRange, rndIntRange, rndSign} from './math';
+import {rndRange, rndIntRange, rndSign,
+        clamp} from './math';
 
 test('rndRange', ()=> {
     expect(rndRange(0, 0.5)).toBeGreaterThanOrEqual(0);
@@ -15,4 +16,11 @@ test('rndIntRange', ()=> {
 test('rndSign', ()=> {
     const sign = rndSign();
     expect(sign).toBe(sign > 0 ? 1 : -1);
+});
+
+test('clamp', ()=> {
+    expect(clamp(10, 2.5, 7.5)).toBe(7.5);
+    expect(clamp(1, 2.5, 7.5)).toBe(2.5);
+    expect(clamp(-10, -2.5, -7.5)).toBe(-2.5);
+    expect(clamp(-1, -2.5, -7.5)).toBe(-2.5);
 });
