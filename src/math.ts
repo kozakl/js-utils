@@ -24,7 +24,7 @@ export function fabs(x:number) {
     return x < 0 ? -x : x;
 }
 
-export function abs(x:number) {
+export function iabs(x:number) {
     return (x + (x >> 31)) ^ (x >> 31);
 }
 
