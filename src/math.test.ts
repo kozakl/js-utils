@@ -20,8 +20,8 @@ test('rndSign', ()=> {
 
 test('clamp', ()=> {
     expect(clamp(10, 2.5, 7.5)).toBe(7.5);
-    expect(clamp(1, 2.5, 7.5)).toBe(2.5);
     expect(clamp(-10, -2.5, -7.5)).toBe(-2.5);
+    expect(clamp(1, 2.5, 7.5)).toBe(2.5);
     expect(clamp(-1, -2.5, -7.5)).toBe(-2.5);
 });
 
