@@ -29,5 +29,5 @@ export function abs(x:number) {
 }
 
 export function sign(x:number) {
-    return Math.abs(x) / x;
+    return Math.abs(x) / x | 0;
 }
