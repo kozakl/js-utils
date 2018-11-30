@@ -1,5 +1,5 @@
 import {rndRange, rndIntRange, rndSign,
-        clamp, fabs, abs} from './math';
+        clamp, fabs, abs, sign} from './math';
 
 test('rndRange', ()=> {
     expect(rndRange(0, 0.5)).toBeGreaterThanOrEqual(0);
@@ -37,4 +37,12 @@ test('abs', ()=> {
     expect(abs(-10)).toBe(10);
     expect(abs(2.5)).toBe(2);
     expect(abs(-2.5)).toBe(2);
+});
+
+test('sign', ()=> {
+    expect(sign(10)).toBe(1);
+    expect(sign(-10)).toBe(-1);
+    expect(sign(10.5)).toBe(1);
+    expect(sign(-10.5)).toBe(-1);
+    expect(sign(0)).toBe(0);
 });
