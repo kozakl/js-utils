@@ -1,5 +1,5 @@
 import {rndRange, rndIntRange, rndSign,
-        clamp, fabs} from './math';
+        clamp, fabs, iabs, sign} from './math';
 
 test('rndRange', ()=> {
     expect(rndRange(0, 0.5)).toBeGreaterThanOrEqual(0);
@@ -20,8 +20,8 @@ test('rndSign', ()=> {
 
 test('clamp', ()=> {
     expect(clamp(10, 2.5, 7.5)).toBe(7.5);
-    expect(clamp(1, 2.5, 7.5)).toBe(2.5);
     expect(clamp(-10, -2.5, -7.5)).toBe(-2.5);
+    expect(clamp(1, 2.5, 7.5)).toBe(2.5);
     expect(clamp(-1, -2.5, -7.5)).toBe(-2.5);
 });
 
@@ -30,4 +30,19 @@ test('fabs', ()=> {
     expect(fabs(-10)).toBe(10);
     expect(fabs(2.5)).toBe(2.5);
     expect(fabs(-2.5)).toBe(2.5);
+});
+
+test('iabs', ()=> {
+    expect(iabs(10)).toBe(10);
+    expect(iabs(-10)).toBe(10);
+    expect(iabs(2.5)).toBe(2);
+    expect(iabs(-2.5)).toBe(2);
+});
+
+test('sign', ()=> {
+    expect(sign(10)).toBe(1);
+    expect(sign(-10)).toBe(-1);
+    expect(sign(10.5)).toBe(1);
+    expect(sign(-10.5)).toBe(-1);
+    expect(sign(0)).toBe(0);
 });

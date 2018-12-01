@@ -1,4 +1,5 @@
 interface Element extends HTMLElement {
+    webkitRequestFullscreen():void;
     mozRequestFullScreen():void;
     msRequestFullscreen():void;
 }
@@ -49,8 +50,11 @@ export default class FullScreen
     }
 }
 
-interface Doc extends Document {
+interface Doc extends HTMLDocument {
+    fullscreenElement:any;
+    webkitFullscreenElement:any;
     mozFullScreenElement:any;
     msFullscreenElement:any;
+    webkitExitFullscreen:any;
     mozCancelFullScreen:any;
 }

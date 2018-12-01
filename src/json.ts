@@ -1,15 +1,18 @@
-export function transformDates<T extends ContainDate>(data:T[])
+export function transformDates<T extends ContainDate>(data:T[] & Normalized<T>, normalized:boolean = false)
 {
-    data.forEach((item)=>
-        item.date = new Date(item.date.toString()));
+    if (!normalized) {
+        data.forEach((item)=>
+            item.date = new Date(item.date.toString()));
+    } else {
+        data.all.map((id)=>
+            data.byId[id].date = new Date(data.byId[id].date.toString()));
+    }
     return data;
 }
 
-export function transformDatesNormalized<T extends ContainDate>(data:Normalized<T>)
-{
-    data.all.map((id)=>
-        data.byId[id].date = new Date(data.byId[id].date.toString()));
-    return data;
+export function transformDatesNormalized<T extends ContainDate>(data:T[] & Normalized<T>) {
+    console.warn('json/transformDatesNormalized is deprecated use json/transformDates instead');
+    return transformDates(data, true);
 }
 
 interface ContainDate {
@@ -17,8 +20,8 @@ interface ContainDate {
 }
 
 interface Normalized<T> {
-    byId: {
+    byId?: {
         [id:number]:T;
     }
-    all:number[];
+    all?:number[];
 }

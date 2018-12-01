@@ -24,10 +24,15 @@ export function fabs(x:number) {
     return x < 0 ? -x : x;
 }
 
-export function abs(x:number) {
+export function iabs(x:number) {
     return (x + (x >> 31)) ^ (x >> 31);
 }
 
+export function abs(x:number) {
+    console.warn('math/abs is deprecated use math/iabs or math/fabs instead');
+    return fabs(x);
+}
+
 export function sign(x:number) {
-    return Math.abs(x) / x;
+    return Math.abs(x) / x | 0;
 }
