@@ -20,8 +20,8 @@ interface ContainDate {
 }
 
 interface Normalized<T> {
-    byId: {
+    byId?: {
         [id:number]:T;
     }
-    all:number[];
+    all?:number[];
 }
