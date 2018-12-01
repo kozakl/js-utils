@@ -30,6 +30,7 @@ export function iabs(x:number) {
 
 export function abs(x:number) {
     console.warn('math/abs is deprecated use math/iabs or math/fabs instead');
+    return fabs(x);
 }
 
 export function sign(x:number) {
