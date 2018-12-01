@@ -3,8 +3,7 @@ export function transformDates<T extends ContainDate>(data:T[] & Normalized<T>, 
     if (!normalized) {
         data.forEach((item)=>
             item.date = new Date(item.date.toString()));
-    }
-    else {
+    } else {
         data.all.map((id)=>
             data.byId[id].date = new Date(data.byId[id].date.toString()));
     }
