@@ -15,6 +15,24 @@ export function transformDatesNormalized<T extends ContainDate>(data:T[] & Norma
     return transformDates(data, true);
 }
 
+export function normalize<T extends ContainId>(data:T[])
+{
+    const normalized:Normalized<T> = {
+        byId: {},
+        all: []
+    };
+    data.forEach((item)=> {
+        normalized.byId[item.id] = item;
+        normalized.all.push(item.id);
+    });
+    
+    return normalized;
+}
+
+interface ContainId {
+    id:number;
+}
+
 interface ContainDate {
     date:Date;
 }
