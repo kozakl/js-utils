@@ -1,4 +1,20 @@
-import {transformDates} from './json';
+import {normalize, transformDates} from './json';
+
+test('normalize', ()=> {
+    let data = JSON.parse(`[
+        {"id": 1, "name": "Bill"},
+        {"id": 2, "name": "Steve"},
+        {"id": 5, "name": "Bob"}
+    ]`);
+    expect(normalize(data)).toEqual({
+        byId: {
+            1: {'id': 1, 'name': 'Bill'},
+            2: {'id': 2, 'name': 'Steve'},
+            5: {'id': 5, 'name': 'Bob'}
+        },
+        all: [1, 2, 5]
+    });
+});
 
 test('transformDates', ()=> {
     let data = JSON.parse(`[
@@ -19,8 +35,8 @@ test('transformDates', ()=> {
     }`);
     expect(transformDates(data, true)).toEqual({
         byId: {
-            1: {"id": 1, "date": new Date(2018, 4, 5, 0, 0, 0, 0)},
-            2: {"id": 2, "date": new Date(2018, 5, 5, 0, 0, 0, 0)}
+            1: {'id': 1, 'date': new Date(2018, 4, 5, 0, 0, 0, 0)},
+            2: {'id': 2, 'date': new Date(2018, 5, 5, 0, 0, 0, 0)}
         },
         all: [1, 2]
     });
