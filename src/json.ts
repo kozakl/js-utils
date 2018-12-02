@@ -1,4 +1,18 @@
-export function transformDates<T extends ContainDate>(data:T[] & Normalized<T>, normalized:boolean = false)
+export function normalize<T extends ContainId>(data:T[])
+{
+    const normalized:Normalized<T> = {
+        byId: {},
+        all: []
+    };
+    data.forEach((item)=> {
+        normalized.byId[item.id] = item;
+        normalized.all.push(item.id);
+    });
+    
+    return normalized;
+}
+
+export function transformDates<T extends ContainDate>(data:T[] & Normalized<T>, normalized?:boolean)
 {
     if (!normalized) {
         data.forEach((item)=>
@@ -13,20 +27,6 @@ export function transformDates<T extends ContainDate>(data:T[] & Normalized<T>, 
 export function transformDatesNormalized<T extends ContainDate>(data:T[] & Normalized<T>) {
     console.warn('json/transformDatesNormalized is deprecated use json/transformDates instead');
     return transformDates(data, true);
-}
-
-export function normalize<T extends ContainId>(data:T[])
-{
-    const normalized:Normalized<T> = {
-        byId: {},
-        all: []
-    };
-    data.forEach((item)=> {
-        normalized.byId[item.id] = item;
-        normalized.all.push(item.id);
-    });
-    
-    return normalized;
 }
 
 interface ContainId {
