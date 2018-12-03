@@ -24,11 +24,6 @@ export function transformDates<T extends ContainDate>(data:T[] & Normalized<T>, 
     return data;
 }
 
-export function transformDatesNormalized<T extends ContainDate>(data:T[] & Normalized<T>) {
-    console.warn('json/transformDatesNormalized is deprecated use json/transformDates instead');
-    return transformDates(data, true);
-}
-
 interface ContainId {
     id:number;
 }

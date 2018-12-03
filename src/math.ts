@@ -28,11 +28,6 @@ export function iabs(x:number) {
     return (x + (x >> 31)) ^ (x >> 31);
 }
 
-export function abs(x:number) {
-    console.warn('math/abs is deprecated use math/iabs or math/fabs instead');
-    return fabs(x);
-}
-
 export function sign(x:number) {
     return Math.abs(x) / x | 0;
 }

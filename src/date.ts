@@ -152,3 +152,12 @@ export function toISO(date:Date, year = true)
         return pad1(date.getMonth() + 1) + '-' + 
                pad1(date.getDate());
 }
+
+export function toISOFull(date:Date)
+{
+        return date.getFullYear() + '-' + 
+               pad1(date.getMonth() + 1) + '-' + 
+               pad1(date.getDate()) + ' ' +
+               pad1(date.getHours()) + ':' +
+               pad1(date.getMinutes());
+}
