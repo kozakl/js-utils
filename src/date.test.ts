@@ -1,7 +1,7 @@
 import {monthName, monthNameAt, monthShortName,
         monthShortNameAt, dayName, dayNameAt,
         dayShortName, dayShortNameAt, daysBetween,
-        isToday, isHoliday, isWeekend, toISO} from './date';
+        isToday, isHoliday, isWeekend, toISO, toISOFull} from './date';
 
 test('monthName', ()=> {
     expect(monthName(new Date(2018, 0))).toBe('Styczen');
@@ -217,4 +217,10 @@ test('toISO', ()=> {
     expect(toISO(new Date(2018, 0, 31), false)).toBe('01-31');
     expect(toISO(new Date(2018, 1, 28), false)).toBe('02-28');
     expect(toISO(new Date(2018, 11, 1), false)).toBe('12-01');
+});
+
+test('toISOFull', ()=> {
+    expect(toISOFull(new Date(2018, 0, 31, 12, 0))).toBe('2018-01-31 12:00');
+    expect(toISOFull(new Date(2018, 1, 28, 12, 10))).toBe('2018-02-28 12:10');
+    expect(toISOFull(new Date(2018, 11, 1, 1, 1))).toBe('2018-12-01 01:01');
 });
