@@ -1,5 +1,4 @@
 export {default as classNames} from './classNames';
-export {default as FullScreen} from './FullScreen';
 export {default as partial} from './partial';
 export {default as pipe} from './pipe';
 export {default as Pool} from './Pool';
