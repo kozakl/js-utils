@@ -31,3 +31,12 @@ export function pad2(n:number)
         return '0' + n;
     return '' + n;
 }
+
+export function padStart(str:string, length:number, char:string = ' ')
+{
+    let out = '';
+    for (let i = length - str.length; i-- > 0;)
+        out += char;
+    
+    return out + str.substring(0, length);
+}
