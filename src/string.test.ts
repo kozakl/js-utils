@@ -1,5 +1,6 @@
 import {lowerFirst, upperFirst,
-        removeSubstr, pad1, pad2} from './string';
+        removeSubstr, pad1, pad2,
+        padStart} from './string';
 
 test('lowerFirst', ()=> {
     expect(lowerFirst('sample')).toEqual('sample');
@@ -29,4 +30,13 @@ test('pad2', ()=> {
     expect(pad2(1)).toEqual('001');
     expect(pad2(10)).toEqual('010');
     expect(pad2(100)).toEqual('100');
+});
+
+test('padStart', ()=> {
+    expect(padStart('', 0)).toEqual('');
+    expect(padStart('', 1)).toEqual(' ');
+    expect(padStart('', 5, '-')).toEqual('-----');
+    expect(padStart('sample', 1)).toEqual('s');
+    expect(padStart('sample', 10)).toEqual('    sample');
+    expect(padStart('sample', 10, '_')).toEqual('____sample');
 });
