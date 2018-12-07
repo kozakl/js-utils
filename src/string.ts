@@ -23,6 +23,13 @@ export function pad1(n:number)
     return '' + n;
 }
 
+export function padNum1(n:number)
+{
+    if (n < 10)
+        return '0' + n;
+    return '' + n;
+}
+
 export function pad2(n:number)
 {
     if (n < 10)
