@@ -34,18 +34,21 @@ export function pad2(n:number)
 
 export function padStart(str:string, length:number, char:string = ' ')
 {
-    let out = '';
-    for (let i = length - str.length; i-- > 0;)
-        out += char;
-    
-    return out + str.substring(0, length);
+    return createPadding(length - str.length, char) +
+           str.substring(0, length);
 }
 
 export function padEnd(str:string, length:number, char:string = ' ')
 {
-    let out = '';
-    for (let i = length - str.length; i-- > 0;)
-        out += char;
+    return str.substring(0, length) +
+           createPadding(length - str.length, char);
+}
+
+function createPadding(length:number, char:string = ' ')
+{
+    let padding = '';
+    for (let i = length; i-- > 0;)
+        padding += char;
     
-    return str.substring(0, length) + out;
+    return padding;
 }
