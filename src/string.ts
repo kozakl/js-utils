@@ -40,3 +40,12 @@ export function padStart(str:string, length:number, char:string = ' ')
     
     return out + str.substring(0, length);
 }
+
+export function padEnd(str:string, length:number, char:string = ' ')
+{
+    let out = '';
+    for (let i = length - str.length; i-- > 0;)
+        out += char;
+    
+    return str.substring(0, length) + out;
+}
