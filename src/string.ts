@@ -18,6 +18,7 @@ export function removeSubstr(str:string, start:number,
 
 export function pad1(n:number)
 {
+    console.warn('string/pad1 is deprecated use string/padNum2 instead');
     if (n < 10)
         return '0' + n;
     return '' + n;
