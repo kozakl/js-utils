@@ -220,7 +220,7 @@ test('toISO', ()=> {
 });
 
 test('toISOFull', ()=> {
-    expect(toISOFull(new Date(2018, 0, 31, 12, 0))).toBe('2018-01-31 12:00');
-    expect(toISOFull(new Date(2018, 1, 28, 12, 10))).toBe('2018-02-28 12:10');
-    expect(toISOFull(new Date(2018, 11, 1, 1, 1))).toBe('2018-12-01 01:01');
+    expect(toISOFull(new Date(2018, 0, 31, 12, 0))).toBe('2018-01-31 12:00:00');
+    expect(toISOFull(new Date(2018, 1, 28, 12, 10))).toBe('2018-02-28 12:10:00');
+    expect(toISOFull(new Date(2018, 11, 1, 1, 1))).toBe('2018-12-01 01:01:00');
 });

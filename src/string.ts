@@ -18,7 +18,18 @@ export function removeSubstr(str:string, start:number,
 
 export function pad1(n:number)
 {
+    console.warn('string/pad1 is deprecated use string/padNum1 instead');
     if (n < 10)
+        return '0' + n;
+    return '' + n;
+}
+
+export function pad2(n:number)
+{
+    console.warn('string/pad2 is deprecated use string/padNum2 instead');
+    if (n < 10)
+        return '00' + n;
+    else if (n < 100)
         return '0' + n;
     return '' + n;
 }
@@ -30,13 +41,21 @@ export function padNum1(n:number)
     return '' + n;
 }
 
-export function pad2(n:number)
+export function padNum2(n:number)
 {
     if (n < 10)
         return '00' + n;
     else if (n < 100)
         return '0' + n;
     return '' + n;
+}
+
+export function pad(str:string, length:number, char:string = ' ')
+{
+    const padding = createPadding((length - str.length) * 0.5 | 0, char);
+    return padding +
+           str.substring(0, length) +
+           padding;
 }
 
 export function padStart(str:string, length:number, char:string = ' ')

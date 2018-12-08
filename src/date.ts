@@ -159,5 +159,6 @@ export function toISOFull(date:Date)
                pad1(date.getMonth() + 1) + '-' + 
                pad1(date.getDate()) + ' ' +
                pad1(date.getHours()) + ':' +
-               pad1(date.getMinutes());
+               pad1(date.getMinutes()) + ':' +
+               pad1(date.getSeconds());
 }
