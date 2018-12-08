@@ -49,6 +49,14 @@ export function padNum2(n:number)
     return '' + n;
 }
 
+export function pad(str:string, length:number, char:string = ' ')
+{
+    const padding = createPadding((length - str.length) * 0.5 | 0, char);
+    return padding +
+           str.substring(0, length) +
+           padding;
+}
+
 export function padStart(str:string, length:number, char:string = ' ')
 {
     return createPadding(length - str.length, char) +
