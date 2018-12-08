@@ -1,6 +1,6 @@
 import {lowerFirst, upperFirst,
         removeSubstr, pad1, pad2,
-        padStart, padEnd} from './string';
+        pad, padStart, padEnd} from './string';
 
 test('lowerFirst', ()=> {
     expect(lowerFirst('sample')).toEqual('sample');
@@ -30,6 +30,19 @@ test('pad2', ()=> {
     expect(pad2(1)).toEqual('001');
     expect(pad2(10)).toEqual('010');
     expect(pad2(100)).toEqual('100');
+});
+
+test('pad', ()=> {
+    expect(pad('', 0)).toEqual('');
+    expect(pad('', 1)).toEqual('');
+    expect(pad('', 2)).toEqual('  ');
+    expect(pad('', 5, '-')).toEqual('----');
+    expect(pad('sample', 1)).toEqual('s');
+    expect(pad('sample', 10)).toEqual('  sample  ');
+    expect(pad('sample', 9, '_')).toEqual('_sample_');
+    expect(pad('sample', 10, '_')).toEqual('__sample__');
+    expect(pad('sample', 11, '_')).toEqual('__sample__');
+    expect(pad('sample', 12, '_')).toEqual('___sample___');
 });
 
 test('padStart', ()=> {
