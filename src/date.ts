@@ -1,5 +1,5 @@
 import Pool from './Pool';
-import {pad1} from './string';
+import {padNum1} from './string';
 
 const months = {
     en: [
@@ -146,19 +146,19 @@ export function toISO(date:Date, year = true)
 {
     if (year)
         return date.getFullYear() + '-' + 
-               pad1(date.getMonth() + 1) + '-' + 
-               pad1(date.getDate());
+               padNum1(date.getMonth() + 1) + '-' + 
+               padNum1(date.getDate());
     else
-        return pad1(date.getMonth() + 1) + '-' + 
-               pad1(date.getDate());
+        return padNum1(date.getMonth() + 1) + '-' + 
+               padNum1(date.getDate());
 }
 
 export function toISOFull(date:Date)
 {
         return date.getFullYear() + '-' + 
-               pad1(date.getMonth() + 1) + '-' + 
-               pad1(date.getDate()) + ' ' +
-               pad1(date.getHours()) + ':' +
-               pad1(date.getMinutes()) + ':' +
-               pad1(date.getSeconds());
+               padNum1(date.getMonth() + 1) + '-' + 
+               padNum1(date.getDate()) + ' ' +
+               padNum1(date.getHours()) + ':' +
+               padNum1(date.getMinutes()) + ':' +
+               padNum1(date.getSeconds());
 }
