@@ -12,16 +12,16 @@ export function normalize<T extends ContainId>(data:T[])
     return normalized;
 }
 
-export function transformDates<T extends ContainDate>(data:T[] & Normalized<T>, normalized?:boolean)
+export function transformDates<T extends ContainDate>(data:T[])
 {
-    if (!normalized) {
-        data.forEach((item)=>
-            item.date = new Date(item.date.toString()));
-    } else {
-        data.all.map((id)=>
-            data.byId[id].date = new Date(data.byId[id].date.toString()));
-    }
-    return data;
+    return data.forEach((item)=>
+        item.date = new Date(item.date.toString()));
+}
+
+export function transformNormalizedDates<T extends ContainDate>(data:Normalized<T>)
+{
+    return data.all.map((id)=>
+        data.byId[id].date = new Date(data.byId[id].date.toString()));
 }
 
 interface ContainId {
@@ -33,8 +33,8 @@ interface ContainDate {
 }
 
 interface Normalized<T> {
-    byId?: {
+    byId: {
         [id:number]:T;
     }
-    all?:number[];
+    all:number[];
 }
