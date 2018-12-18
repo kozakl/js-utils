@@ -14,14 +14,16 @@ export function normalize<T extends ContainId>(data:T[])
 
 export function transformDates<T extends ContainDate>(data:T[])
 {
-    return data.forEach((item)=>
+    data.forEach((item)=>
         item.date = new Date(item.date.toString()));
+    return data;
 }
 
 export function transformNormalizedDates<T extends ContainDate>(data:Normalized<T>)
 {
-    return data.all.map((id)=>
+    data.all.map((id)=>
         data.byId[id].date = new Date(data.byId[id].date.toString()));
+    return data;
 }
 
 interface ContainId {
