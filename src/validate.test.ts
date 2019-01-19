@@ -1,12 +1,14 @@
 import {isFill, isEmail, toBoolean} from './validate';
 
 test('isFill', ()=> {
+    expect(isFill(undefined)).toEqual(false);
     expect(isFill(' ')).toEqual(false);
     expect(isFill('')).toEqual(false);
     expect(isFill('sample')).toEqual(true);
 });
 
 test('isEmail', ()=> {
+    expect(isEmail(undefined)).toEqual(false);
     expect(isEmail('sample')).toEqual(false);
     expect(isEmail('sample@')).toEqual(false);
     expect(isEmail('sample@.')).toEqual(false);
