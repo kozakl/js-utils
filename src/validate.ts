@@ -1,4 +1,7 @@
-export function isFill(str:string) {
+export function isFill(str:string)
+{
+    if (!str)
+        return false;
     return /\S/.test(str);
 }
 
