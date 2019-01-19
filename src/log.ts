@@ -2,10 +2,10 @@ import {toISOFull} from './date';
 
 const date = new Date();
 
-export function timestamp(...args:string[])
+export function timestamp(...params:any)
 {
     date.setTime(Date.now());
-    args.unshift(toISOFull(date) + ':');
+    params.unshift(toISOFull(date) + ':');
     
-    console.log.apply(null, args);
+    console.log.apply(null, params);
 }
