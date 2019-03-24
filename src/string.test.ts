@@ -1,5 +1,5 @@
 import {lowerFirst, upperFirst,
-        removeSubstr, padNum1, padNum2,
+        remove, padNum1, padNum2,
         pad, padStart, padEnd} from './string';
 
 test('lowerFirst', ()=> {
@@ -14,10 +14,10 @@ test('upperFirst', ()=> {
     expect(upperFirst('SAMPLE')).toEqual('SAMPLE');
 });
 
-test('removeSubstr', ()=> {
-    expect(removeSubstr('sample abc text', 0, 7)).toEqual('abc text');
-    expect(removeSubstr('sample abc text', 7, 11)).toEqual('sample text');
-    expect(removeSubstr('sample abc text', 10, 15)).toEqual('sample abc');
+test('remove', ()=> {
+    expect(remove('sample abc text', 0, 7)).toEqual('abc text');
+    expect(remove('sample abc text', 7, 11)).toEqual('sample text');
+    expect(remove('sample abc text', 10, 15)).toEqual('sample abc');
 });
 
 test('padNum1', ()=> {

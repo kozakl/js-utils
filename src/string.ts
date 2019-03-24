@@ -10,8 +10,8 @@ export function upperFirst(str:string)
            str.substr(1);
 }
 
-export function removeSubstr(str:string, start:number,
-                                         end:number) {
+export function remove(str:string, start:number,
+                                   end:number) {
     return str.substring(0, start) +
            str.substring(end);
 }
