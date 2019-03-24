@@ -1,6 +1,7 @@
 import {lowerFirst, upperFirst,
-        remove, padNum1, padNum2,
-        pad, padStart, padEnd} from './string';
+        remove, removeTo,
+        padNum1, padNum2, pad,
+        padStart, padEnd} from './string';
 
 test('lowerFirst', ()=> {
     expect(lowerFirst('sample')).toEqual('sample');
@@ -18,6 +19,13 @@ test('remove', ()=> {
     expect(remove('sample abc text', 0, 7)).toEqual('abc text');
     expect(remove('sample abc text', 7, 11)).toEqual('sample text');
     expect(remove('sample abc text', 10, 15)).toEqual('sample abc');
+});
+
+test('removeTo', ()=> {
+    expect(removeTo('sample abc text', 'abc')).toEqual('abc text');
+    expect(removeTo('sample abc text', 'abc', 4)).toEqual('text');
+    expect(removeTo('sample abc/text', '/')).toEqual('/text');
+    expect(removeTo('sample abc/text', '/', 1)).toEqual('text');
 });
 
 test('padNum1', ()=> {
