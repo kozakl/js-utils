@@ -10,28 +10,20 @@ export function upperFirst(str:string)
            str.substr(1);
 }
 
-export function removeSubstr(str:string, start:number,
-                                         end:number) {
+export function remove(str:string, start:number,
+                                   end:number) {
     return str.substring(0, start) +
            str.substring(end);
 }
 
-export function pad1(n:number)
-{
-    console.warn('string/pad1 is deprecated use string/padNum1 instead');
-    if (n < 10)
-        return '0' + n;
-    return '' + n;
+export function removeTo(str:string, search:string,
+                                     offset:number = 0) {
+    return str.substr(str.indexOf(search) + offset);
 }
 
-export function pad2(n:number)
-{
-    console.warn('string/pad2 is deprecated use string/padNum2 instead');
-    if (n < 10)
-        return '00' + n;
-    else if (n < 100)
-        return '0' + n;
-    return '' + n;
+export function removeFrom(str:string, search:string,
+                                       offset:number = 0) {
+    return str.substr(0, str.indexOf(search) + offset);
 }
 
 export function padNum1(n:number)

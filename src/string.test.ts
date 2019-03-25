@@ -1,6 +1,7 @@
 import {lowerFirst, upperFirst,
-        removeSubstr, padNum1, padNum2,
-        pad, padStart, padEnd} from './string';
+        remove, removeTo, removeFrom,
+        padNum1, padNum2, pad,
+        padStart, padEnd} from './string';
 
 test('lowerFirst', ()=> {
     expect(lowerFirst('sample')).toEqual('sample');
@@ -14,10 +15,24 @@ test('upperFirst', ()=> {
     expect(upperFirst('SAMPLE')).toEqual('SAMPLE');
 });
 
-test('removeSubstr', ()=> {
-    expect(removeSubstr('sample abc text', 0, 7)).toEqual('abc text');
-    expect(removeSubstr('sample abc text', 7, 11)).toEqual('sample text');
-    expect(removeSubstr('sample abc text', 10, 15)).toEqual('sample abc');
+test('remove', ()=> {
+    expect(remove('sample abc text', 0, 7)).toEqual('abc text');
+    expect(remove('sample abc text', 7, 11)).toEqual('sample text');
+    expect(remove('sample abc text', 10, 15)).toEqual('sample abc');
+});
+
+test('removeTo', ()=> {
+    expect(removeTo('sample abc text', 'abc')).toEqual('abc text');
+    expect(removeTo('sample abc text', 'abc', 4)).toEqual('text');
+    expect(removeTo('sample abc/text', '/')).toEqual('/text');
+    expect(removeTo('sample abc/text', '/', 1)).toEqual('text');
+});
+
+test('removeFrom', ()=> {
+    expect(removeFrom('sample abc text', 'abc')).toEqual('sample ');
+    expect(removeFrom('sample abc text', 'abc', 3)).toEqual('sample abc');
+    expect(removeFrom('sample abc/text', '/')).toEqual('sample abc');
+    expect(removeFrom('sample abc/text', '/', 1)).toEqual('sample abc/');
 });
 
 test('padNum1', ()=> {
