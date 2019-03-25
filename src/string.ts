@@ -26,24 +26,6 @@ export function removeFrom(str:string, search:string,
     return str.substr(0, str.indexOf(search) + offset);
 }
 
-export function pad1(n:number)
-{
-    console.warn('string/pad1 is deprecated use string/padNum1 instead');
-    if (n < 10)
-        return '0' + n;
-    return '' + n;
-}
-
-export function pad2(n:number)
-{
-    console.warn('string/pad2 is deprecated use string/padNum2 instead');
-    if (n < 10)
-        return '00' + n;
-    else if (n < 100)
-        return '0' + n;
-    return '' + n;
-}
-
 export function padNum1(n:number)
 {
     if (n < 10)
