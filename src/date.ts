@@ -142,23 +142,25 @@ function isEasterOrCC(date:Date)
     }
 }
 
-export function toISO(date:Date, year = true)
-{
-    if (year)
-        return date.getFullYear() + '-' + 
-               padNum1(date.getMonth() + 1) + '-' + 
-               padNum1(date.getDate());
-    else
-        return padNum1(date.getMonth() + 1) + '-' + 
-               padNum1(date.getDate());
+export function toISO(date:Date, year = true) {
+    return (year ? date.getFullYear() + '-' : '') + 
+           padNum1(date.getMonth() + 1) + '-' + 
+           padNum1(date.getDate());
 }
 
 export function toISOFull(date:Date)
 {
+    console.log('toISOFull is Deprecated now, use toISOTime or toISO instead');
         return date.getFullYear() + '-' + 
                padNum1(date.getMonth() + 1) + '-' + 
                padNum1(date.getDate()) + ' ' +
                padNum1(date.getHours()) + ':' +
                padNum1(date.getMinutes()) + ':' +
                padNum1(date.getSeconds());
+}
+
+export function toISOTime(date:Date, seconds = true) {
+    return padNum1(date.getHours()) + ':' + 
+           padNum1(date.getMinutes()) + (seconds ? ':' : '') + 
+           (seconds ? padNum1(date.getSeconds()) : '');
 }
