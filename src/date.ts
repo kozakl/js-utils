@@ -142,15 +142,10 @@ function isEasterOrCC(date:Date)
     }
 }
 
-export function toISO(date:Date, year = true)
-{
-    if (year)
-        return date.getFullYear() + '-' + 
-               padNum1(date.getMonth() + 1) + '-' + 
-               padNum1(date.getDate());
-    else
-        return padNum1(date.getMonth() + 1) + '-' + 
-               padNum1(date.getDate());
+export function toISO(date:Date, year = true) {
+    return (year ? date.getFullYear() + '-' : '') + 
+           padNum1(date.getMonth() + 1) + '-' + 
+           padNum1(date.getDate());
 }
 
 export function toISOFull(date:Date)
