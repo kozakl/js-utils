@@ -157,3 +157,9 @@ export function toISOFull(date:Date)
                padNum1(date.getMinutes()) + ':' +
                padNum1(date.getSeconds());
 }
+
+export function toISOTime(date:Date, seconds = true) {
+    return padNum1(date.getHours()) + ':' + 
+           padNum1(date.getMinutes()) + (seconds ? ':' : '') + 
+           (seconds ? padNum1(date.getSeconds()) : '');
+}
