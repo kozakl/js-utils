@@ -150,6 +150,7 @@ export function toISO(date:Date, year = true) {
 
 export function toISOFull(date:Date)
 {
+    console.log('toISOFull is Deprecated now, use toISOTime or toISO instead');
         return date.getFullYear() + '-' + 
                padNum1(date.getMonth() + 1) + '-' + 
                padNum1(date.getDate()) + ' ' +
