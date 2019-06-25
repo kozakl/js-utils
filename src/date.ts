@@ -164,3 +164,48 @@ export function toISOTime(date:Date, seconds = true) {
            padNum1(date.getMinutes()) + (seconds ? ':' : '') + 
            (seconds ? padNum1(date.getSeconds()) : '');
 }
+
+export function formatISO(date:Date, format:string)
+{
+    const year = date.getFullYear().toString(),
+          month = padNum1(date.getMonth() + 1),
+          day = padNum1(date.getDate()),
+          hours = padNum1(date.getHours()),
+          minutes = padNum1(date.getMinutes()),
+          seconds = padNum1(date.getSeconds());
+    switch (format)
+    {
+        case 'YYYY-MM-DD HH:MM:SS':
+            return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+        
+        case 'YYYY-MM-DDTHH:MM:SS':
+            return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+        
+        case 'YYYY-MM-DD HH:MM':
+            return `${year}-${month}-${day} ${hours}:${minutes}`;
+        
+        case 'YYYY-MM-DDTHH:MM':
+            return `${year}-${month}-${day}T${hours}:${minutes}`;
+        
+        case 'YYYY-MM-DD':
+            return `${year}-${month}-${day}`;
+        
+        case 'YYYY-MM':
+            return `${year}-${month}`;
+        
+        case 'YY-MM-DD':
+            return `${year.substr(2)}-${month}-${day}`;
+        
+        case 'YY-MM':
+            return `${year.substr(2)}-${month}`;
+        
+        case 'MM-DD':
+            return `${month}-${day}`;
+        
+        case 'HH:MM:SS':
+            return `${hours}:${minutes}:${seconds}`;
+        
+        case 'HH:MM':
+            return `${hours}:${minutes}`;
+    }
+}
