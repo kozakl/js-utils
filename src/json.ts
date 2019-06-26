@@ -19,10 +19,10 @@ export function transformDates<T extends ContainDate>(data:T[])
     return data;
 }
 
-export function transformNormalizedDates<T extends ContainDate>(data:Normalized<T>)
-{
+export function transformNormalizedDates<T extends any>(data:Normalized<T>, key:string = 'date') {
     data.all.map((id)=>
-        data.byId[id].date = new Date(data.byId[id].date.toString()));
+        data.byId[id][key] =
+            data.byId[id][key] && new Date(data.byId[id].dateFrom));
     return data;
 }
 
