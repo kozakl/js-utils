@@ -22,7 +22,7 @@ export function transformDates<T extends ContainDate>(data:T[])
 export function transformNormalizedDates<T extends any>(data:Normalized<T>, key:string = 'date') {
     data.all.map((id)=>
         data.byId[id][key] =
-            data.byId[id][key] && new Date(data.byId[id].dateFrom));
+            data.byId[id][key] && new Date(data.byId[id][key]));
     return data;
 }
 
