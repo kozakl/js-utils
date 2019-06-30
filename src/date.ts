@@ -218,9 +218,11 @@ export function formatISO(date:Date, format:string)
             return `${month}-${day}`;
         
         case 'HH:MM:SS':
+            console.warn('HH:MM:SS in formatISO is deprecated now, use formatTime instead');
             return `${hours}:${minutes}:${seconds}`;
         
         case 'HH:MM':
+            console.warn('HH:MM in formatISO is deprecated now, use formatTime instead');
             return `${hours}:${minutes}`;
     }
 }
