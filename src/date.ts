@@ -161,6 +161,7 @@ export function toISOFull(date:Date)
 }
 
 export function toISOTime(date:Date, seconds = true) {
+    console.log('toISOTime is deprecated now, use formatTime instead');
     return padNum1(date.getHours()) + ':' + 
            padNum1(date.getMinutes()) + (seconds ? ':' : '') + 
            (seconds ? padNum1(date.getSeconds()) : '');
