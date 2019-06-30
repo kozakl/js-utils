@@ -226,3 +226,36 @@ export function formatISO(date:Date, format:string)
             return `${hours}:${minutes}`;
     }
 }
+
+export function formatEUR(date:Date, format:string)
+{
+    const year = date.getFullYear().toString(),
+          month = padNum1(date.getMonth() + 1),
+          day = padNum1(date.getDate()),
+          hours = padNum1(date.getHours()),
+          minutes = padNum1(date.getMinutes()),
+          seconds = padNum1(date.getSeconds());
+    switch (format)
+    {
+        case 'DD.MM.YYYY HH:MM:SS':
+            return `${day}.${month}.${year} ${hours}:${minutes}:${seconds}`;
+        
+        case 'DD.MM.YYYY HH:MM':
+            return `${day}.${month}.${year} ${hours}:${minutes}`;
+        
+        case 'DD.MM.YYYY':
+            return `${day}.${month}.${year}`;
+        
+        case 'DD.MM.YY':
+            return `${day}.${month}.${year.substr(2)}`;
+        
+        case 'DD.MM':
+            return `${day}.${month}`;
+        
+        case 'MM.YYYY':
+            return `${month}.${year}`;
+        
+        case 'MM.YY':
+            return `${month}.${year.substr(2)}`;
+    }
+}
