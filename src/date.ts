@@ -165,6 +165,21 @@ export function toISOTime(date:Date, seconds = true) {
            (seconds ? padNum1(date.getSeconds()) : '');
 }
 
+export function formatTime(date:Date, format:string)
+{
+    const hours = padNum1(date.getHours()),
+          minutes = padNum1(date.getMinutes()),
+          seconds = padNum1(date.getSeconds());
+    switch (format)
+    {
+        case 'HH:MM:SS':
+            return `${hours}:${minutes}:${seconds}`;
+        
+        case 'HH:MM':
+            return `${hours}:${minutes}`;
+    }
+}
+
 export function formatISO(date:Date, format:string)
 {
     const year = date.getFullYear().toString(),
