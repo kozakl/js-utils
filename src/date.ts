@@ -143,6 +143,7 @@ function isEasterOrCC(date:Date)
 }
 
 export function toISO(date:Date, year = true) {
+    console.log('toISO is deprecated now, use formatISO or formatEUR');
     return (year ? date.getFullYear() + '-' : '') + 
            padNum1(date.getMonth() + 1) + '-' + 
            padNum1(date.getDate());
