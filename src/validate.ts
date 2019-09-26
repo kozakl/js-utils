@@ -24,8 +24,7 @@ export function toBoolean(str:string)
     }
 }
 
-export function validateBoolean(value:any)
-{
+export function validateBoolean(value:any) {
     return value === true ||
            value === '1' ||
            value === 'true';

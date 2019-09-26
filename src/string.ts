@@ -1,11 +1,9 @@
-export function lowerFirst(str:string)
-{
+export function lowerFirst(str:string) {
     return str.substr(0, 1).toLowerCase() +
            str.substr(1);
 }
 
-export function upperFirst(str:string)
-{
+export function upperFirst(str:string) {
     return str.substr(0, 1).toUpperCase() +
            str.substr(1);
 }
@@ -50,14 +48,12 @@ export function pad(str:string, length:number, char:string = ' ')
            padding;
 }
 
-export function padStart(str:string, length:number, char:string = ' ')
-{
+export function padStart(str:string, length:number, char:string = ' ') {
     return createPadding(length - str.length, char) +
            str.substring(0, length);
 }
 
-export function padEnd(str:string, length:number, char:string = ' ')
-{
+export function padEnd(str:string, length:number, char:string = ' ') {
     return str.substring(0, length) +
            createPadding(length - str.length, char);
 }
