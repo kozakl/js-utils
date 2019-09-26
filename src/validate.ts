@@ -22,3 +22,10 @@ export function toBoolean(str:string)
             return false;
     }
 }
+
+export function validateBoolean(value:any)
+{
+    return value === true ||
+           value === '1' ||
+           value === 'true';
+}
