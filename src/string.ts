@@ -24,8 +24,8 @@ export function removeFrom(str:string, search:string,
     return str.substr(0, str.indexOf(search) + offset);
 }
 
-export function escape(value:string) {
-    return `'${value}'`;
+export function escape(str:string) {
+    return `'${str}'`;
 }
 
 export function padNum1(n:number)
