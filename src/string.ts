@@ -1,11 +1,9 @@
-export function lowerFirst(str:string)
-{
+export function lowerFirst(str:string) {
     return str.substr(0, 1).toLowerCase() +
            str.substr(1);
 }
 
-export function upperFirst(str:string)
-{
+export function upperFirst(str:string) {
     return str.substr(0, 1).toUpperCase() +
            str.substr(1);
 }
@@ -24,6 +22,10 @@ export function removeTo(str:string, search:string,
 export function removeFrom(str:string, search:string,
                                        offset:number = 0) {
     return str.substr(0, str.indexOf(search) + offset);
+}
+
+export function escape(str:string) {
+    return `'${str}'`;
 }
 
 export function padNum1(n:number)
@@ -50,14 +52,12 @@ export function pad(str:string, length:number, char:string = ' ')
            padding;
 }
 
-export function padStart(str:string, length:number, char:string = ' ')
-{
+export function padStart(str:string, length:number, char:string = ' ') {
     return createPadding(length - str.length, char) +
            str.substring(0, length);
 }
 
-export function padEnd(str:string, length:number, char:string = ' ')
-{
+export function padEnd(str:string, length:number, char:string = ' ') {
     return str.substring(0, length) +
            createPadding(length - str.length, char);
 }

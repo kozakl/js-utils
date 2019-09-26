@@ -16,6 +16,13 @@ export function removeNull<T>(array:T[])
     return array;
 }
 
+export function emptyNull<T>(array:T[]) {
+    if (array.length) {
+        return array;
+    }
+    return null;
+}
+
 export function shuffle<T>(array:T[])
 {
     for (let i = array.length; i--;) {
