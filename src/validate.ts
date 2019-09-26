@@ -14,6 +14,7 @@ export function isEmail(str:string)
 
 export function toBoolean(str:string)
 {
+    console.log('toBoolean is deprecated now, use validateBoolean instead');
     switch (str) {
         case 'true':
         case '1':
