@@ -7,7 +7,9 @@ export default function escape(obj:any)
             }
         }
         return obj;
-    } else {
+    } else if (obj) {
         return `'${obj}'`;
+    } else {
+        return null;
     }
 }
