@@ -1,4 +1,5 @@
-import {first, last, removeNull, shuffle} from './array';
+import {first, last, removeNull,
+        emptyNull, shuffle} from './array';
 
 test('first', ()=> {
     expect(first([])).toEqual(undefined);
@@ -15,6 +16,11 @@ test('removeNull', ()=> {
           cleaned = removeNull(original.concat());
     
     expect(cleaned).not.toEqual(expect.arrayContaining([null]));
+});
+
+test('emptyNull', ()=> {
+    expect(emptyNull([1, 2])).toEqual([1, 2]);
+    expect(emptyNull([])).toEqual(null);
 });
 
 test('shuffle', ()=> {

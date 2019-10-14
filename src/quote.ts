@@ -1,6 +1,5 @@
-export default function escape(obj:any)
+export default function quote(obj:any)
 {
-    console.log('escape is deprecated now, use quote instead');
     if (typeof obj === 'object') {
         for (const key in obj) {
             if (obj.hasOwnProperty(key)) {
