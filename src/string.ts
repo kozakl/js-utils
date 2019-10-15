@@ -19,6 +19,11 @@ export function removeTo(str:string, search:string,
     return str.substr(str.indexOf(search) + offset);
 }
 
+export function removeLastTo(str:string, search:string,
+                                         offset:number = 0) {
+    return str.substr(str.lastIndexOf(search) + offset);
+}
+
 export function removeFrom(str:string, search:string,
                                        offset:number = 0) {
     return str.substr(0, str.indexOf(search) + offset);
