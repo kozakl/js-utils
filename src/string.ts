@@ -24,6 +24,11 @@ export function removeFrom(str:string, search:string,
     return str.substr(0, str.indexOf(search) + offset);
 }
 
+export function removeLastFrom(str:string, search:string,
+                                           offset:number = 0) {
+    return str.substr(0, str.lastIndexOf(search) + offset);
+}
+
 export function escape(str:string) {
     return `'${str}'`;
 }
