@@ -1,11 +1,11 @@
-import {toISOFull} from './date';
+import {formatISO} from './date';
 
 const date = new Date();
 
 export function timestamp(...params:any)
 {
     date.setTime(Date.now());
-    params.unshift(toISOFull(date) + ':');
+    params.unshift(formatISO(date, 'YYYY-MM-DD HH:MM:SS') + ':');
     
     console.log.apply(null, params);
 }

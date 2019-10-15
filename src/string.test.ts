@@ -1,5 +1,6 @@
 import {lowerFirst, upperFirst,
-        remove, removeTo, removeFrom,
+        remove, removeTo, removeLastTo,
+        removeFrom, removeLastFrom,
         padNum1, padNum2, pad,
         padStart, padEnd} from './string';
 
@@ -28,11 +29,25 @@ test('removeTo', ()=> {
     expect(removeTo('sample abc/text', '/', 1)).toEqual('text');
 });
 
+test('removeLastTo', ()=> {
+    expect(removeLastTo('sample abc text', 'abc')).toEqual('abc text');
+    expect(removeLastTo('sample abc text abc text2', 'abc', 4)).toEqual('text2');
+    expect(removeLastTo('sample/abc/text', '/')).toEqual('/text');
+    expect(removeLastTo('sample/abc/text', '/', 1)).toEqual('text');
+});
+
 test('removeFrom', ()=> {
     expect(removeFrom('sample abc text', 'abc')).toEqual('sample ');
     expect(removeFrom('sample abc text', 'abc', 3)).toEqual('sample abc');
     expect(removeFrom('sample abc/text', '/')).toEqual('sample abc');
     expect(removeFrom('sample abc/text', '/', 1)).toEqual('sample abc/');
+});
+
+test('removeLastFrom', ()=> {
+    expect(removeLastFrom('sample abc text', 'abc')).toEqual('sample ');
+    expect(removeLastFrom('sample abc text', 'abc', 3)).toEqual('sample abc');
+    expect(removeLastFrom('sample/abc/text', '/')).toEqual('sample/abc');
+    expect(removeLastFrom('sample/abc/text', '/', 1)).toEqual('sample/abc/');
 });
 
 test('padNum1', ()=> {

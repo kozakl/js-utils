@@ -24,8 +24,9 @@ export default class Pool
     public static freeArray<T>(Type:Constructor<T>, array:T[])
     {
         const pool = this.getPool(Type);
-        for (let i = array.length; i--;)
+        for (let i = array.length; i--;) {
             array[i] && pool.push(array[i]);
+        }
         
         array.length = 0;
     }

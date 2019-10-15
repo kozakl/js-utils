@@ -9,8 +9,9 @@ export function last<T>(array:T[]) {
 export function removeNull<T>(array:T[])
 {
     for (let i = array.length; i--;) {
-        if (!array[i])  
+        if (!array[i]) {
             array.splice(i, 1);
+        }
     }
     
     return array;

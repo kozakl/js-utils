@@ -19,13 +19,19 @@ export function removeTo(str:string, search:string,
     return str.substr(str.indexOf(search) + offset);
 }
 
+export function removeLastTo(str:string, search:string,
+                                         offset:number = 0) {
+    return str.substr(str.lastIndexOf(search) + offset);
+}
+
 export function removeFrom(str:string, search:string,
                                        offset:number = 0) {
     return str.substr(0, str.indexOf(search) + offset);
 }
 
-export function escape(str:string) {
-    return `'${str}'`;
+export function removeLastFrom(str:string, search:string,
+                                           offset:number = 0) {
+    return str.substr(0, str.lastIndexOf(search) + offset);
 }
 
 export function padNum1(n:number)
@@ -65,8 +71,9 @@ export function padEnd(str:string, length:number, char:string = ' ') {
 function createPadding(length:number, char:string = ' ')
 {
     let padding = '';
-    for (let i = length; i-- > 0;)
+    for (let i = length; i-- > 0;) {
         padding += char;
+    }
     
     return padding;
 }
