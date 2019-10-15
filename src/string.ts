@@ -29,10 +29,6 @@ export function removeLastFrom(str:string, search:string,
     return str.substr(0, str.lastIndexOf(search) + offset);
 }
 
-export function escape(str:string) {
-    return `'${str}'`;
-}
-
 export function padNum1(n:number)
 {
     if (n < 10)
