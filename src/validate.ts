@@ -14,6 +14,7 @@ export function isEmail(str:string)
 
 export function validateBoolean(value:any) {
     return value === true ||
-           value === '1' ||
-           value === 'true';
+           value === 1 ||
+           value === 'true' ||
+           value === '1';
 }
