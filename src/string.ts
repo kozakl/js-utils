@@ -65,8 +65,9 @@ export function padEnd(str:string, length:number, char:string = ' ') {
 function createPadding(length:number, char:string = ' ')
 {
     let padding = '';
-    for (let i = length; i-- > 0;)
+    for (let i = length; i-- > 0;) {
         padding += char;
+    }
     
     return padding;
 }
