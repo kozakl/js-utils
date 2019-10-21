@@ -7,7 +7,7 @@ export default function quote(obj:any)
             }
         }
         return obj;
-    } else if (obj) {
+    } else if (obj || obj === 0) {
         return `'${obj}'`;
     } else {
         return null;
