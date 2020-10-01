@@ -29,7 +29,7 @@ export function transformNormalizedDates<T extends any>(data:Normalized<T>, key:
 }
 
 interface ContainId {
-    id:number;
+    id?:number;
 }
 
 interface Normalized<T> {
