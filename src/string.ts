@@ -34,22 +34,6 @@ export function removeLastFrom(str:string, search:string,
     return str.substr(0, str.lastIndexOf(search) + offset);
 }
 
-export function padNum1(n:number)
-{
-    if (n < 10)
-        return '0' + n;
-    return '' + n;
-}
-
-export function padNum2(n:number)
-{
-    if (n < 10)
-        return '00' + n;
-    else if (n < 100)
-        return '0' + n;
-    return '' + n;
-}
-
 export function pad(str:string, length:number, char:string = ' ')
 {
     const padding = createPadding((length - str.length) * 0.5 | 0, char);
