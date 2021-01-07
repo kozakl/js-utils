@@ -1,6 +1,5 @@
 export {default as classNames} from './classNames';
 export {default as isInViewport} from './isInViewport';
-export {default as params} from './params';
 export {default as partial} from './partial';
 export {default as pipe} from './pipe';
 export {default as Pool} from './Pool';
