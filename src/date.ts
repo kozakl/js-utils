@@ -142,13 +142,6 @@ function isEasterOrCC(date:Date)
     }
 }
 
-export function toISO(date:Date, year = true) {
-    console.log('toISO is deprecated now, use formatISO or formatEUR');
-    return (year ? date.getFullYear() + '-' : '') + 
-           pad2(date.getMonth() + 1) + '-' + 
-           pad2(date.getDate());
-}
-
 export function formatTime(date:Date, format:string)
 {
     const hours = pad2(date.getHours()),
