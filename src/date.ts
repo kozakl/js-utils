@@ -149,17 +149,6 @@ export function toISO(date:Date, year = true) {
            pad2(date.getDate());
 }
 
-export function toISOFull(date:Date)
-{
-    console.log('toISOFull is Deprecated now, use toISOTime or toISO instead');
-        return date.getFullYear() + '-' + 
-               pad2(date.getMonth() + 1) + '-' + 
-               pad2(date.getDate()) + ' ' +
-               pad2(date.getHours()) + ':' +
-               pad2(date.getMinutes()) + ':' +
-               pad2(date.getSeconds());
-}
-
 export function formatTime(date:Date, format:string)
 {
     const hours = pad2(date.getHours()),
