@@ -1,7 +1,7 @@
 import {monthName, monthNameAt, monthShortName,
         monthShortNameAt, dayName, dayNameAt,
         dayShortName, dayShortNameAt, daysBetween,
-        isToday, isHoliday, isWeekend, toISO, toISOFull, toISOTime} from './date';
+        isToday, isHoliday, isWeekend} from './date';
 
 test('monthName', ()=> {
     expect(monthName(new Date(2018, 0))).toBe('Styczen');
@@ -208,26 +208,4 @@ test('isWeekend', ()=> {
     expect(isWeekend(new Date(2019, 2, 9))).toBeTruthy(); // Saturday
     expect(isWeekend(new Date(2018, 4, 13))).toBeTruthy(); // Sunday
     expect(isWeekend(new Date(2019, 2, 24))).toBeTruthy(); // Sunday
-});
-
-test('toISO', ()=> {
-    expect(toISO(new Date(2018, 0, 31))).toBe('2018-01-31');
-    expect(toISO(new Date(2018, 1, 28))).toBe('2018-02-28');
-    expect(toISO(new Date(2018, 11, 1))).toBe('2018-12-01');
-    expect(toISO(new Date(2018, 0, 31), false)).toBe('01-31');
-    expect(toISO(new Date(2018, 1, 28), false)).toBe('02-28');
-    expect(toISO(new Date(2018, 11, 1), false)).toBe('12-01');
-});
-
-test('toISOFull', ()=> {
-    expect(toISOFull(new Date(2018, 0, 31, 12, 0))).toBe('2018-01-31 12:00:00');
-    expect(toISOFull(new Date(2018, 1, 28, 12, 10))).toBe('2018-02-28 12:10:00');
-    expect(toISOFull(new Date(2018, 11, 1, 1, 1))).toBe('2018-12-01 01:01:00');
-});
-
-test('toISOTime', ()=> {
-    expect(toISOTime(new Date(2018, 0, 31, 12, 0))).toBe('12:00:00');
-    expect(toISOTime(new Date(2018, 1, 28, 12, 10))).toBe('12:10:00');
-    expect(toISOTime(new Date(2018, 11, 1, 1, 1))).toBe('01:01:00');
-    expect(toISOTime(new Date(2018, 1, 28, 12, 10), false)).toBe('12:10');
 });
