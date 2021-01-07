@@ -148,7 +148,7 @@ test('daysBetween', ()=> {
     const end = new Date();
     end.setHours(0, 0, 0, 0);
     end.setDate(end.getDate() + 1);
-    const days = daysBetween([], start, end);
+    const days = daysBetween(start, end, []);
     
     let date = new Date(start);
     expect(days[0].toString()).toBe(date.toString());
