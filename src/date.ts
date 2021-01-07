@@ -114,7 +114,7 @@ export function isWeekend(date:Date)
 }
 
 function isRegularHoliday(date:Date) {
-    return regularHolidays.includes(toISO(date, false));
+    return regularHolidays.includes(formatISO(date, 'MM-DD'));
 }
 
 function isEasterOrCC(date:Date)
