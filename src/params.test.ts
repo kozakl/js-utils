@@ -1,6 +1,6 @@
-import params from './params';
+import {setParams} from './params';
 
-test('params', ()=> {
-    expect(params({name: 'John', lastname: 'Smith'})).toBe('name=John&lastname=Smith');
-    expect(params({email: 'john@gmail.com'})).toBe('email=john%40gmail.com');
+test('setParams', ()=> {
+    expect(setParams({name: 'John', lastname: 'Smith'})).toBe('name=John&lastname=Smith');
+    expect(setParams({email: 'john@gmail.com'})).toBe('email=john%40gmail.com');
 });
