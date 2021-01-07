@@ -21,6 +21,7 @@ export function removeNull<T>(array:T[])
  * @deprecated
  */
 export function emptyNull<T>(array:T[]) {
+    console.log('emptyNull is deprecated now, use array.length instead');
     if (array.length) {
         return array;
     }
