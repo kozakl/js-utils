@@ -1,5 +1,5 @@
 import Pool from './Pool';
-import {padNum1} from './string';
+import {pad2} from './number';
 
 const months = {
     en: [
@@ -76,7 +76,7 @@ export function dayShortNameAt(index:number) {
     return daysShort[index];
 }
 
-export function daysBetween(days:Date[], start:Date, end:Date)
+export function daysBetween(start:Date, end:Date, days:Date[] = [])
 {
     const current = Pool.get<Date>(Date);
     current.setTime(start.getTime());
@@ -114,7 +114,7 @@ export function isWeekend(date:Date)
 }
 
 function isRegularHoliday(date:Date) {
-    return regularHolidays.includes(toISO(date, false));
+    return regularHolidays.includes(formatISO(date, 'MM-DD'));
 }
 
 function isEasterOrCC(date:Date)
@@ -142,36 +142,11 @@ function isEasterOrCC(date:Date)
     }
 }
 
-export function toISO(date:Date, year = true) {
-    console.log('toISO is deprecated now, use formatISO or formatEUR');
-    return (year ? date.getFullYear() + '-' : '') + 
-           padNum1(date.getMonth() + 1) + '-' + 
-           padNum1(date.getDate());
-}
-
-export function toISOFull(date:Date)
-{
-    console.log('toISOFull is Deprecated now, use toISOTime or toISO instead');
-        return date.getFullYear() + '-' + 
-               padNum1(date.getMonth() + 1) + '-' + 
-               padNum1(date.getDate()) + ' ' +
-               padNum1(date.getHours()) + ':' +
-               padNum1(date.getMinutes()) + ':' +
-               padNum1(date.getSeconds());
-}
-
-export function toISOTime(date:Date, seconds = true) {
-    console.log('toISOTime is deprecated now, use formatTime instead');
-    return padNum1(date.getHours()) + ':' + 
-           padNum1(date.getMinutes()) + (seconds ? ':' : '') + 
-           (seconds ? padNum1(date.getSeconds()) : '');
-}
-
 export function formatTime(date:Date, format:string)
 {
-    const hours = padNum1(date.getHours()),
-          minutes = padNum1(date.getMinutes()),
-          seconds = padNum1(date.getSeconds());
+    const hours = pad2(date.getHours()),
+          minutes = pad2(date.getMinutes()),
+          seconds = pad2(date.getSeconds());
     switch (format)
     {
         case 'HH:MM:SS':
@@ -185,11 +160,11 @@ export function formatTime(date:Date, format:string)
 export function formatISO(date:Date, format:string)
 {
     const year = date.getFullYear().toString(),
-          month = padNum1(date.getMonth() + 1),
-          day = padNum1(date.getDate()),
-          hours = padNum1(date.getHours()),
-          minutes = padNum1(date.getMinutes()),
-          seconds = padNum1(date.getSeconds());
+          month = pad2(date.getMonth() + 1),
+          day = pad2(date.getDate()),
+          hours = pad2(date.getHours()),
+          minutes = pad2(date.getMinutes()),
+          seconds = pad2(date.getSeconds());
     switch (format)
     {
         case 'YYYY-MM-DD HH:MM:SS':
@@ -232,11 +207,11 @@ export function formatISO(date:Date, format:string)
 export function formatEUR(date:Date, format:string)
 {
     const year = date.getFullYear().toString(),
-          month = padNum1(date.getMonth() + 1),
-          day = padNum1(date.getDate()),
-          hours = padNum1(date.getHours()),
-          minutes = padNum1(date.getMinutes()),
-          seconds = padNum1(date.getSeconds());
+          month = pad2(date.getMonth() + 1),
+          day = pad2(date.getDate()),
+          hours = pad2(date.getHours()),
+          minutes = pad2(date.getMinutes()),
+          seconds = pad2(date.getSeconds());
     switch (format)
     {
         case 'DD.MM.YYYY HH:MM:SS':
