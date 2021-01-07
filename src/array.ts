@@ -17,6 +17,9 @@ export function removeNull<T>(array:T[])
     return array;
 }
 
+/**
+ * @deprecated
+ */
 export function emptyNull<T>(array:T[]) {
     if (array.length) {
         return array;
