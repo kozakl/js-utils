@@ -53,7 +53,6 @@ export function matchSrcSet(srcSet:string, screenWidth:number) {
             
             
             
-            console.log(odiff, diff);
             
             if (source === null ||  // First One
                 (selectedDiff < 0 && candidateDiff >= 0) || // Got smaller - and then larger
